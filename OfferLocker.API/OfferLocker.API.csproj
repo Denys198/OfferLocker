@@ -19,5 +19,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OfferLocker.Persistence\OfferLocker.Persistence.csproj" />
+  </ItemGroup>
+
 
 </Project>
