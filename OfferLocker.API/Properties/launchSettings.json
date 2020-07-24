@@ -1,6 +1,6 @@
 ﻿{
   "profiles": {
-    "TripLooking.API": {
+    "OfferLocker.API": {
       "commandName": "Project",
       "launchBrowser": false,
       "launchUrl": "swagger",
