@@ -1,0 +1,24 @@
+<div class="navbar">
+  <a href = "../../offer/details">Create offer</a>
+  <a href = "../../notifications/">Notifications</a>
+  <a href ="">My profile</a>
+</div>
+
+
+<div class="page-container">
+  <h1>My Campus Communities</h1>
+
+  <div class="cards">
+    <app-tile  *ngFor="let campus of campusList" label="{{campus.name}}" background="{{campus.backgroundImage}}"  (click)="goToCampus(campus.id)"></app-tile>
+
+  </div>
+<div>
+
+<div class="page-container"></div>
+  <br><br>
+  <h1>Categories</h1>
+  <div class="cards">
+    <app-tile  *ngFor="let category of categoryList" label="{{category.name}}" background="{{category.backgroundImage}}"  (click)="goToCategory(category.id)"></app-tile>
+  </div>
+
+ </div>

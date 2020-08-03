@@ -1,0 +1,23 @@
+<header>
+  <section>
+    <a routerLink="dashboard">
+      <img src="../../../assets/images/undraw_wishlist_jk8a.png" />
+    </a>
+  </section>
+
+  <section id="project-title">
+    <h2>
+      OFFERS project
+    </h2>
+  </section>
+
+  <section class="flex-row-end" *ngIf="userService.email | async as username">
+    <img src="../../../assets/images/undraw_profile_6l1l.png">
+    <h3 class="flex-row-end">
+      Welcome, {{username}}
+    </h3>
+    <img class="logout"
+         src="../../../assets/images/logout.png"
+         (click)="logout()">
+  </section>
+</header>

@@ -1,0 +1,21 @@
+
+
+<div class="navbar">
+  <a href = "../../offer/details">Create offer</a>
+  <a href = "../../notifications/">Notifications</a>
+  <a href="">My profile</a>
+</div>
+
+
+
+<div class="page-container">
+  <h1>
+    Offer List
+  </h1>
+
+  <div class="cards">
+    <app-tile  *ngFor="let offer of offerList" label="{{offer.name}}" background="{{offer.backgroundImage}}"  (click)="goToOffer(offer.id)"></app-tile>
+
+  </div>
+
+</div>
