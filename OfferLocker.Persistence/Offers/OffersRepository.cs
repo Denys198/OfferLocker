@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using OfferLocker.Entities.Offers;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,5 +29,13 @@ namespace OfferLocker.Persistence.Offers
             => await this.context.Offers
                 .Include(offer => offer.Comments)
                 .FirstAsync(offer => offer.Id == id);
+
+        public async Task<Offer> GetByIdWithCategories(Guid id)
+            => await this.context.Offers
+                .Include(offer => offer.Categories)
+                .FirstAsync(offer => offer.Id == id);
+
+        public async Task<Offer> GetByCategory(Category category) =>
+            await context.Offers.Where(x => x.Categories.Contains(category)).FirstOrDefaultAsync();
     }
 }

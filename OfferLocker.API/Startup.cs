@@ -17,13 +17,16 @@ using OfferLocker.Business.Identity.Models;
 using OfferLocker.Business.Identity.Services.Implementations;
 using OfferLocker.Business.Identity.Services.Interfaces;
 using OfferLocker.Business.Identity.Validators;
+using OfferLocker.Business.Meetups;
+using OfferLocker.Business.Meetups.Services.Implementations;
+using OfferLocker.Business.Meetups.Services.Interfaces;
 using OfferLocker.Business.Offers;
 using OfferLocker.Business.Offers.Services.Implementations;
 using OfferLocker.Business.Offers.Services.Interfaces;
 using OfferLocker.Persistence;
 using OfferLocker.Persistence.Identity;
+using OfferLocker.Persistence.Meetups;
 using OfferLocker.Persistence.Offers;
-using TripLooking.Business.Identity.Models;
 
 namespace OfferLocker.API
 {
@@ -42,8 +45,10 @@ namespace OfferLocker.API
 
 			services
 				.AddScoped<IOffersService, OffersService>()
-				.AddScoped<ICommentsService, CommentsService>()
+				.AddScoped<IOfferCommentsService, OfferCommentsService>()
 				.AddScoped<IPhotosService, PhotosService>()
+				.AddScoped<ICategoriesService, CategoriesService>()
+				.AddScoped<IMeetupsService, MeetupsService>()
 				.AddScoped<IPasswordHasher, PasswordHasher>()
 				.AddScoped<IAuthenticationService, AuthenticationService>();
 
@@ -53,12 +58,14 @@ namespace OfferLocker.API
 				.AddDbContext<OffersContext>(config =>
 					config.UseSqlServer(Configuration.GetConnectionString("OffersConnection")))
 				.AddScoped<IOffersRepository, OffersRepository>()
+				.AddScoped<IMeetupsRepository,MeetupsRepository>()
 				.AddScoped<IUserRepository, UserRepository>();
 
 			services
 				.AddAutoMapper(c =>
 				{
 					c.AddProfile<OffersMappingProfile>();
+					c.AddProfile<MeetupsMappingProfile>();
 					c.AddProfile<IdentityMappingProfile>();
 				}, typeof(OffersService))
 				.AddHttpContextAccessor()
@@ -75,10 +82,7 @@ namespace OfferLocker.API
 
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
-			if (env.IsDevelopment())
-			{
-				app.UseDeveloperExceptionPage();
-			}
+			app.UseDeveloperExceptionPage();
 
 			app
 				.UseSwagger()

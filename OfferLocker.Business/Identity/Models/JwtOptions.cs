@@ -1,5 +1,5 @@
 ﻿
-namespace TripLooking.Business.Identity.Models
+namespace OfferLocker.Business.Identity.Models
 {
     public sealed class JwtOptions
     {

@@ -8,12 +8,27 @@ namespace OfferLocker.Persistence.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Meetups",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    Date = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Meetups", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Offers",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true)
+                    Description = table.Column<string>(nullable: true),
+                    Price = table.Column<float>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -32,6 +47,26 @@ namespace OfferLocker.Persistence.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Category",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(nullable: false),
+                    OfferId = table.Column<Guid>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Category", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Category_Offers_OfferId",
+                        column: x => x.OfferId,
+                        principalTable: "Offers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -75,9 +110,21 @@ namespace OfferLocker.Persistence.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Category_OfferId",
+                table: "Category",
+                column: "OfferId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Comment_OfferId",
                 table: "Comment",
                 column: "OfferId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Meetups_Name",
+                table: "Meetups",
+                column: "Name",
+                unique: true,
+                filter: "[Name] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Photo_OfferId",
@@ -94,7 +141,13 @@ namespace OfferLocker.Persistence.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Category");
+
+            migrationBuilder.DropTable(
                 name: "Comment");
+
+            migrationBuilder.DropTable(
+                name: "Meetups");
 
             migrationBuilder.DropTable(
                 name: "Photo");

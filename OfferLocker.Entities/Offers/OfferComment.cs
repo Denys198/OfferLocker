@@ -2,9 +2,9 @@
 
 namespace OfferLocker.Entities.Offers
 {
-    public sealed class Comment : Entity
+    public sealed class OfferComment : Entity
     {
-        public Comment(string content, Guid userId) : base()
+        public OfferComment(string content, Guid userId) : base()
         {
             Content = content;
             UserId = userId;

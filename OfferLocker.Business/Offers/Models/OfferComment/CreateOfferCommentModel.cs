@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Text.Json.Serialization;
 
 namespace OfferLocker.Business.Offers.Models.Comment
 {
-    public sealed class CreateCommentModel
+    public sealed class CreateOfferCommentModel
     {
         public string Content { get; set; }
 

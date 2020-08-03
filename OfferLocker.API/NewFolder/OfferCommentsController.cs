@@ -10,11 +10,11 @@ namespace OfferLocker.API.NewFolder
     [ApiController]
     [Route("api/v1/offers/{offerId}/comments")]
     [Authorize]
-    public sealed class CommentsController : ControllerBase
+    public sealed class OfferCommentsController : ControllerBase
     {
-        private readonly ICommentsService _commentsService;
+        private readonly IOfferCommentsService _commentsService;
 
-        public CommentsController(ICommentsService commentsService)
+        public OfferCommentsController(IOfferCommentsService commentsService)
         {
             _commentsService = commentsService;
         }
@@ -28,7 +28,7 @@ namespace OfferLocker.API.NewFolder
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromRoute] Guid offerId, [FromBody] CreateCommentModel model)
+        public async Task<IActionResult> Add([FromRoute] Guid offerId, [FromBody] CreateOfferCommentModel model)
         {
             var result = await _commentsService.Add(offerId, model);
 

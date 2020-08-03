@@ -12,30 +12,30 @@ using System.Threading.Tasks;
 
 namespace OfferLocker.Business.Offers.Services.Implementations
 {
-	public sealed class CommentsService : ICommentsService
+	public sealed class OfferCommentsService : IOfferCommentsService
 	{
 		private readonly IOffersRepository _repository;
 		private readonly IMapper _mapper;
 		private readonly IHttpContextAccessor _accessor;
 
-		public CommentsService(IOffersRepository repository, IMapper mapper, IHttpContextAccessor accessor)
+		public OfferCommentsService(IOffersRepository repository, IMapper mapper, IHttpContextAccessor accessor)
 		{
 			_repository = repository;
 			_mapper = mapper;
 			_accessor = accessor;
 		}
 
-		public async Task<IEnumerable<CommentModel>> Get(Guid offerId)
+		public async Task<IEnumerable<OfferCommentModel>> Get(Guid offerId)
 		{
 			var offer = await _repository.GetByIdWithComments(offerId);
 
-			return _mapper.Map<IEnumerable<CommentModel>>(offer.Comments);
+			return _mapper.Map<IEnumerable<OfferCommentModel>>(offer.Comments);
 		}
 
-		public async Task<CommentModel> Add(Guid offerId, CreateCommentModel model)
+		public async Task<OfferCommentModel> Add(Guid offerId, CreateOfferCommentModel model)
 		{
 			model.UserId = Guid.Parse(_accessor.HttpContext.User.Claims.First(c => c.Type == "userId").Value);
-			var comment = _mapper.Map<Comment>(model);
+			var comment = _mapper.Map<OfferComment>(model);
 			var offer = await _repository.GetById(offerId);
 
 			offer.AddComment(comment);
@@ -43,7 +43,7 @@ namespace OfferLocker.Business.Offers.Services.Implementations
 			_repository.Update(offer);
 			await _repository.SaveChanges();
 
-			return _mapper.Map<CommentModel>(comment);
+			return _mapper.Map<OfferCommentModel>(comment);
 		}
 
 		public async Task Delete(Guid offerId, Guid commentId)

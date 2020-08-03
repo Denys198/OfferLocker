@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using OfferLocker.Business.Offers.Models.Category;
 using OfferLocker.Business.Offers.Models.Comment;
 using OfferLocker.Business.Offers.Models.Offer;
 using OfferLocker.Business.Offers.Models.Photo;
@@ -13,11 +14,14 @@ namespace OfferLocker.Business.Offers
 			CreateMap<UpsertOfferModel, Offer>();
 			CreateMap<Offer, OfferModel>();
 
-			CreateMap<CreateCommentModel, Comment>();
-			CreateMap<Comment, CommentModel>();
+			CreateMap<CreateOfferCommentModel, OfferComment>();
+			CreateMap<OfferComment, OfferCommentModel>();
 
 			CreateMap<PhotoModel, Photo>();
 			CreateMap<Photo, PhotoModel>();
+
+			CreateMap<CreateCategoryModel, Category>();
+			CreateMap<Category, CategoryModel>();
 		}
 	}
 }

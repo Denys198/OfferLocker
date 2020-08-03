@@ -10,7 +10,7 @@ using OfferLocker.Persistence;
 namespace OfferLocker.Persistence.Migrations
 {
     [DbContext(typeof(OffersContext))]
-    [Migration("20200724094403_NewMigration")]
+    [Migration("20200730084405_NewMigration")]
     partial class NewMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,6 +47,53 @@ namespace OfferLocker.Persistence.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("OfferLocker.Entities.Meetup.Meetup", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique()
+                        .HasFilter("[Name] IS NOT NULL");
+
+                    b.ToTable("Meetups");
+                });
+
+            modelBuilder.Entity("OfferLocker.Entities.Offers.Category", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("OfferId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OfferId");
+
+                    b.ToTable("Category");
+                });
+
             modelBuilder.Entity("OfferLocker.Entities.Offers.Comment", b =>
                 {
                     b.Property<Guid>("Id")
@@ -80,6 +127,9 @@ namespace OfferLocker.Persistence.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<float>("Price")
+                        .HasColumnType("real");
+
                     b.HasKey("Id");
 
                     b.ToTable("Offers");
@@ -104,6 +154,14 @@ namespace OfferLocker.Persistence.Migrations
                     b.HasIndex("OfferId");
 
                     b.ToTable("Photo");
+                });
+
+            modelBuilder.Entity("OfferLocker.Entities.Offers.Category", b =>
+                {
+                    b.HasOne("OfferLocker.Entities.Offers.Offer", null)
+                        .WithMany("Categories")
+                        .HasForeignKey("OfferId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("OfferLocker.Entities.Offers.Comment", b =>

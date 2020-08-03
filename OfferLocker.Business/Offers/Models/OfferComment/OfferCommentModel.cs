@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace OfferLocker.Business.Offers.Models.Comment
 {
-    public sealed class CommentModel
+    public sealed class OfferCommentModel
     {
         public Guid Id { get; private set; }
 

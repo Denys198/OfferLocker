@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OfferLocker.Entities.Offers;
+using System;
 
 namespace OfferLocker.Business.Offers.Models.Offer
 {
@@ -9,5 +10,7 @@ namespace OfferLocker.Business.Offers.Models.Offer
 		public string Name { get; set; }
 
 		public string Description { get; set; }
+
+		public float Price { get; set; }
 	}
 }
