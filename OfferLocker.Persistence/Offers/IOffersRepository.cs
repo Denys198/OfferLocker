@@ -1,4 +1,5 @@
 ﻿using LinqBuilder.Core;
+using OfferLocker.Entities.Commons;
 using OfferLocker.Entities.Offers;
 using System;
 using System.Collections.Generic;
