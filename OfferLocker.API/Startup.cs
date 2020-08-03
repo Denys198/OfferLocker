@@ -1,19 +1,36 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
+using AutoMapper;
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
+using OfferLocker.API.Extensions;
+using OfferLocker.Business.Identity;
+using OfferLocker.Business.Identity.Models;
+using OfferLocker.Business.Identity.Services.Implementations;
+using OfferLocker.Business.Identity.Services.Interfaces;
+using OfferLocker.Business.Identity.Validators;
+using OfferLocker.Business.Meetups;
+using OfferLocker.Business.Meetups.Services.Implementations;
+using OfferLocker.Business.Meetups.Services.Interfaces;
+using OfferLocker.Business.Offers;
+using OfferLocker.Business.Offers.Services.Implementations;
+using OfferLocker.Business.Offers.Services.Interfaces;
+using OfferLocker.Persistence;
+using OfferLocker.Persistence.Identity;
+using OfferLocker.Persistence.Meetups;
+using OfferLocker.Persistence.Offers;
 
 namespace OfferLocker.API
 {
-	public class Startup
+	public sealed class Startup
 	{
 		public Startup(IConfiguration configuration)
 		{
@@ -22,30 +39,92 @@ namespace OfferLocker.API
 
 		public IConfiguration Configuration { get; }
 
-		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddControllers();
+			services.AddCors();
+
+			services
+				.AddScoped<IOffersService, OffersService>()
+				.AddScoped<IOfferCommentsService, OfferCommentsService>()
+				.AddScoped<IPhotosService, PhotosService>()
+				.AddScoped<ICategoriesService, CategoriesService>()
+				.AddScoped<IMeetupsService, MeetupsService>()
+				.AddScoped<IPasswordHasher, PasswordHasher>()
+				.AddScoped<IAuthenticationService, AuthenticationService>();
+
+			AddAuthentication(services);
+
+			services
+				.AddDbContext<OffersContext>(config =>
+					config.UseSqlServer(Configuration.GetConnectionString("OffersConnection")))
+				.AddScoped<IOffersRepository, OffersRepository>()
+				.AddScoped<IMeetupsRepository,MeetupsRepository>()
+				.AddScoped<IUserRepository, UserRepository>();
+
+			services
+				.AddAutoMapper(c =>
+				{
+					c.AddProfile<OffersMappingProfile>();
+					c.AddProfile<MeetupsMappingProfile>();
+					c.AddProfile<IdentityMappingProfile>();
+				}, typeof(OffersService))
+				.AddHttpContextAccessor()
+				.AddSwagger()
+				.AddControllers()
+				.AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+
+			services
+				.AddMvc()
+				.AddFluentValidation();
+
+			services.AddTransient<IValidator<UserRegisterModel>, UserRegisterModelValidator>();
 		}
 
-		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
-			if (env.IsDevelopment())
-			{
-				app.UseDeveloperExceptionPage();
-			}
+			app.UseDeveloperExceptionPage();
 
-			app.UseHttpsRedirection();
+			app
+				.UseSwagger()
+				.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Offers API"));
 
-			app.UseRouting();
+			app
+				.UseHttpsRedirection()
+				.UseRouting()
+				.UseCors(options => options
+						.AllowAnyOrigin()
+						.AllowAnyMethod()
+						.AllowAnyHeader())
+				.UseAuthentication()
+				.UseAuthorization()
+				.UseEndpoints(endpoints => endpoints.MapControllers());
+		}
 
-			app.UseAuthorization();
+		private void AddAuthentication(IServiceCollection services)
+		{
+			var jwtOptions = Configuration.GetSection("JwtOptions").Get<JwtOptions>();
+			services.Configure<JwtOptions>(Configuration.GetSection("JwtOptions"));
 
-			app.UseEndpoints(endpoints =>
-			{
-				endpoints.MapControllers();
-			});
+			services
+				.AddAuthentication(options =>
+				{
+					options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+					options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+				})
+				.AddJwtBearer(options =>
+				{
+					options.RequireHttpsMetadata = true;
+					options.SaveToken = true;
+					options.TokenValidationParameters = new TokenValidationParameters
+					{
+						ValidateIssuerSigningKey = true,
+						IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtOptions.Key)),
+						ValidateIssuer = true,
+						ValidateAudience = true,
+						ValidIssuer = jwtOptions.Issuer,
+						ValidAudience = jwtOptions.Audience
+					};
+				});
 		}
 	}
 }

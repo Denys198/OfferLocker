@@ -9,24 +9,24 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Business", "2. Business"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Persistence", "3. Persistence", "{43DF0B01-08FD-411F-9DB0-E7DD20929274}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OfferLocker.API", "OfferLocker.API\OfferLocker.API.csproj", "{DEBB5949-9BAF-4961-9936-B1CA7D25A115}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OfferLocker.API", "OfferLocker.API\OfferLocker.API.csproj", "{DEBB5949-9BAF-4961-9936-B1CA7D25A115}"
 	ProjectSection(ProjectDependencies) = postProject
 		{8EDD45AF-B0AF-4A62-A9FE-19507DFC2A65} = {8EDD45AF-B0AF-4A62-A9FE-19507DFC2A65}
 		{8EC7B5BC-8DCB-4609-B954-2E00E9D1D23B} = {8EC7B5BC-8DCB-4609-B954-2E00E9D1D23B}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OfferLocker.Business", "OfferLocker.Business\OfferLocker.Business.csproj", "{8EDD45AF-B0AF-4A62-A9FE-19507DFC2A65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OfferLocker.Business", "OfferLocker.Business\OfferLocker.Business.csproj", "{8EDD45AF-B0AF-4A62-A9FE-19507DFC2A65}"
 	ProjectSection(ProjectDependencies) = postProject
 		{B7F3DE6A-8A88-46E7-8749-030C04A65945} = {B7F3DE6A-8A88-46E7-8749-030C04A65945}
 		{8EC7B5BC-8DCB-4609-B954-2E00E9D1D23B} = {8EC7B5BC-8DCB-4609-B954-2E00E9D1D23B}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OfferLocker.Persistence", "OfferLocker.Persistence\OfferLocker.Persistence.csproj", "{8EC7B5BC-8DCB-4609-B954-2E00E9D1D23B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OfferLocker.Persistence", "OfferLocker.Persistence\OfferLocker.Persistence.csproj", "{8EC7B5BC-8DCB-4609-B954-2E00E9D1D23B}"
 	ProjectSection(ProjectDependencies) = postProject
 		{B7F3DE6A-8A88-46E7-8749-030C04A65945} = {B7F3DE6A-8A88-46E7-8749-030C04A65945}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OfferLocker.Entities", "OfferLocker.Entities\OfferLocker.Entities.csproj", "{B7F3DE6A-8A88-46E7-8749-030C04A65945}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OfferLocker.Entities", "OfferLocker.Entities\OfferLocker.Entities.csproj", "{B7F3DE6A-8A88-46E7-8749-030C04A65945}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -9,6 +9,7 @@ using OfferLocker.Business.Offers.Models.University;
 using OfferLocker.Business.Offers.Models.UserType;
 using OfferLocker.Entities.Commons;
 using OfferLocker.Entities.Identity;
+using OfferLocker.Business.Offers.Models.Category;
 using OfferLocker.Entities.Offers;
 
 namespace OfferLocker.Business.Offers
@@ -20,8 +21,8 @@ namespace OfferLocker.Business.Offers
 			CreateMap<UpsertOfferModel, Offer>();
 			CreateMap<Offer, OfferModel>();
 
-			CreateMap<CreateCommentModel, Comment>();
-			CreateMap<Comment, CommentModel>();
+			CreateMap<CreateOfferCommentModel, OfferComment>();
+			CreateMap<OfferComment, OfferCommentModel>();
 
 			CreateMap<PhotoModel, Photo>();
 			CreateMap<Photo, PhotoModel>();
@@ -31,6 +32,8 @@ namespace OfferLocker.Business.Offers
 			CreateMap<Student, StudentModel>();
 			CreateMap<CampusCommunity, CampusCommunityModel>();
 			CreateMap<UserType, UserTypeModel>();
+			CreateMap<CreateCategoryModel, Category>();
+			CreateMap<Category, CategoryModel>();
 		}
 	}
 }
