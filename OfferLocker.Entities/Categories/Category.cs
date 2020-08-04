@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace OfferLocker.Entities.Offers
+namespace OfferLocker.Entities.Category
 {
 	public sealed class Category : Entity
 	{
@@ -15,5 +15,11 @@ namespace OfferLocker.Entities.Offers
 
 		[Required]
 		public string Description { get; set; }
+
+		public void Update(string name, string description)
+		{
+			Name = name;
+			Description = description;
+		}
 	}
 }

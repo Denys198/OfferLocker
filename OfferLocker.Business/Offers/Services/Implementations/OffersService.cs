@@ -59,7 +59,7 @@ namespace OfferLocker.Business.Offers.Services.Implementations
 		{
 			var offer = await _repository.GetById(id);
 
-			offer.Update(model.Name, model.Description, model.Price);
+			offer.Update(model.Name, model.Description, model.Price, model.CategoryId);
 
 			_repository.Update(offer);
 			await _repository.SaveChanges();

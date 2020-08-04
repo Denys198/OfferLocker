@@ -5,7 +5,7 @@ using OfferLocker.Business.Offers.Services.Interfaces;
 using System;
 using System.Threading.Tasks;
 
-namespace OfferLocker.API.NewFolder
+namespace OfferLocker.API.Controllers
 {
     [ApiController]
     [Route("api/v1/offers/{offerId}/comments")]

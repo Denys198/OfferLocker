@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace OfferLocker.Entities.Meetup
@@ -15,10 +16,13 @@ namespace OfferLocker.Entities.Meetup
             Date = date;
         }
 
+        [Required]
         public string Name { get; private set; }
 
+        [Required]
         public string Description { get; set; }
 
+        [Required]
         public DateTime Date { get; set; }
 
         public void Update(string name, string description, DateTime date)

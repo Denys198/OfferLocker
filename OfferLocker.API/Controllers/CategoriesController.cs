@@ -1,48 +1,62 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using OfferLocker.Business.Offers.Models.Category;
-using OfferLocker.Business.Offers.Services.Interfaces;
+using OfferLocker.Business.Categories.Models;
+using OfferLocker.Business.Categories.Services.Interfaces;
+using OfferLocker.Business.Offers.Models.Offer;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
-namespace OfferLocker.API.NewFolder
+namespace OfferLocker.API.Controllers
 {
 	[ApiController]
-	[Route("api/v1/offers/{offerId}/categories")]
+	[Route("api/v1/categories")]
 	[Authorize]
 	public sealed class CategoriesController : ControllerBase
 	{
-        private readonly ICategoriesService _categoriesService;
+		private readonly ICategoriesService _categoriesService;
 
-        public CategoriesController(ICategoriesService categoriesService)
-        {
-            _categoriesService = categoriesService;
-        }
+		public CategoriesController(ICategoriesService categoriesService)
+		{
+			_categoriesService = categoriesService;
+		}
 
-        [HttpGet]
-        public async Task<IActionResult> Get([FromRoute] Guid offerId)
-        {
-            var result = await _categoriesService.Get(offerId);
+		[HttpGet]
+		public async Task<IActionResult> Search([FromQuery] SearchModel model)
+		{
+			var result = await _categoriesService.Get(model);
 
-            return Ok(result);
-        }
+			return Ok(result);
+		}
 
-        [HttpPost]
-        public async Task<IActionResult> Add([FromRoute] Guid offerId, [FromBody] CreateCategoryModel model)
-        {
-            var result = await _categoriesService.Add(offerId, model);
+		[HttpGet("{id}")]
+		public async Task<IActionResult> Get([FromRoute] Guid id)
+		{
+			var result = await _categoriesService.GetById(id);
 
-            return Created(result.Id.ToString(), null);
-        }
+			return Ok(result);
+		}
 
-        [HttpDelete("{categoryId}")]
-        public async Task<IActionResult> Delete([FromRoute] Guid offerId, [FromRoute] Guid categoryId)
-        {
-            await _categoriesService.Delete(offerId, categoryId);
+		[HttpPost]
+		public async Task<IActionResult> Add([FromBody] UpsertCategoryModel model)
+		{
+			var result = await _categoriesService.Add(model);
+			return Created(result.Id.ToString(), null);
+		}
 
-            return NoContent();
-        }
-    }
+		[HttpPatch("{id}")]
+		public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpsertCategoryModel model)
+		{
+			await _categoriesService.Update(id, model);
+
+			return NoContent();
+		}
+
+		[HttpDelete("{id}")]
+		public async Task<IActionResult> Delete([FromRoute] Guid id)
+		{
+			await _categoriesService.Delete(id);
+
+			return NoContent();
+		}
+	}
 }
