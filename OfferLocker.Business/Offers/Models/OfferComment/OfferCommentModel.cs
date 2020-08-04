@@ -8,6 +8,6 @@ namespace OfferLocker.Business.Offers.Models.Comment
 
         public string Content { get; private set; }
 
-        public Guid UserId { get; private set; }
+        public Guid CategoryId { get; private set; }
     }
 }
