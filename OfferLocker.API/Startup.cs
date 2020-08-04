@@ -24,6 +24,7 @@ using OfferLocker.Business.Offers;
 using OfferLocker.Business.Offers.Services.Implementations;
 using OfferLocker.Business.Offers.Services.Interfaces;
 using OfferLocker.Persistence;
+using OfferLocker.Persistence.Commons;
 using OfferLocker.Persistence.Identity;
 using OfferLocker.Persistence.Meetups;
 using OfferLocker.Persistence.Offers;
@@ -59,7 +60,8 @@ namespace OfferLocker.API
 					config.UseSqlServer(Configuration.GetConnectionString("OffersConnection")))
 				.AddScoped<IOffersRepository, OffersRepository>()
 				.AddScoped<IMeetupsRepository,MeetupsRepository>()
-				.AddScoped<IUserRepository, UserRepository>();
+				.AddScoped<IUserRepository, UserRepository>()
+				.AddScoped<IFollowRepository, FollowRepository>();
 
 			services
 				.AddAutoMapper(c =>

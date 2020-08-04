@@ -1,9 +1,12 @@
 ﻿
+using OfferLocker.Entities.Commons;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace OfferLocker.Entities.Identity
 {
-    public sealed class User : Entity
+    public class User : Entity
     {
         public User(string fullName, string email, string passwordHash)
             : base()
@@ -21,5 +24,8 @@ namespace OfferLocker.Entities.Identity
 
         [Required]
         public string PasswordHash { get; private set; }
+
+        public virtual IList<Follow> Followers { get; set; }
+        public virtual IList<Follow> Following { get; set; }
     }
 }
