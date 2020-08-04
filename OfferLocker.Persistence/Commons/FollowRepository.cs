@@ -1,11 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OfferLocker.Entities.Commons;
-using OfferLocker.Entities.Identity;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
 namespace OfferLocker.Persistence.Commons
@@ -14,6 +11,7 @@ namespace OfferLocker.Persistence.Commons
     {
         Task<IList<Follow>> GetFollowersByFollowed(Guid followedId);
         Task<IList<Follow>> GetFollowingByFollower(Guid followerId);
+        Task AddRange(IList<Follow> follows);
 
     }
 
@@ -43,8 +41,13 @@ namespace OfferLocker.Persistence.Commons
                 .Include(f => f.Follower)
                 .ToListAsync();
 
-
             return followersUserIds;
+        }
+
+        public async Task AddRange(IList<Follow> follows)
+        {
+            await _context.Follow.AddRangeAsync(follows);
+            await _context.SaveChangesAsync();
         }
     }
 }

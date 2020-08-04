@@ -2,11 +2,7 @@ using OfferLocker.Business.Offers.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
-using OfferLocker.Persistence;
-using OfferLocker.Entities.Commons;
-using OfferLocker.Persistence.Commons;
 using Microsoft.AspNetCore.Http;
-using FluentValidation.Validators;
 using System.Collections.Generic;
 
 namespace OfferLocker.API.Controllers
@@ -22,18 +18,6 @@ namespace OfferLocker.API.Controllers
             _followService = followService;
             _httpContextAccessor = httpContextAccessor;
         }
-        
-
-        //[HttpGet]
-        //public async Task<IActionResult> GetAllEntities()
-        //{
-        //    var ext = new OfferLocker.Business.Extensions(_httpContextAccessor);
-        //    var id = ext.GetLoggedUserId();
-
-
-        //    var result = await _followRepository.GetAll();
-        //    return Ok(result);
-        //}
 
         /// <summary>
         /// get logged user's list of users that he follows
@@ -87,7 +71,11 @@ namespace OfferLocker.API.Controllers
         [HttpDelete]
         public async Task<IActionResult> UnfollowUsers([FromBody] IList<Guid> userIds)
         {
-            return NotFound();
+            var extensie = new Business.Extensions(_httpContextAccessor);
+            var loggedUserId = extensie.GetLoggedUserId();
+
+            await _followService.UnfollowUsers(Guid.Parse(loggedUserId), userIds);
+            return Ok();
         }
     }
 }

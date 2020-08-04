@@ -8,6 +8,12 @@ namespace OfferLocker.Entities.Commons
     {
         public Follow()
            : base() { }
+        public Follow(Guid followerId, Guid followedId)
+           : base() 
+        {
+            IdUserFollowed = followedId;
+            IdUserFollower = followerId;
+        }
 
         [Required]
         public Guid IdUserFollower { get; set; }
