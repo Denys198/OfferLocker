@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using LinqBuilder.Core;
-
 using OfferLocker.Entities.Identity;
 
 namespace OfferLocker.Persistence.Identity

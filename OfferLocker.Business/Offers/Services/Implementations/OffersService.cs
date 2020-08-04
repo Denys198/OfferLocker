@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
 using AutoMapper;
 using OfferLocker.Business.Offers.Extensions;
 using OfferLocker.Business.Offers.Models.Offer;

@@ -1,6 +1,4 @@
 ﻿using OfferLocker.Business.Offers.Models.UserType;
-using OfferLocker.Entities.Identity;
-
 using System;
 using System.Threading.Tasks;
 
