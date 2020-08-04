@@ -50,6 +50,7 @@ namespace OfferLocker.API
 				.AddScoped<IPhotosService, PhotosService>()
 				.AddScoped<ICategoriesService, CategoriesService>()
 				.AddScoped<IMeetupsService, MeetupsService>()
+				.AddScoped<IFollowService, FollowService>()
 				.AddScoped<IPasswordHasher, PasswordHasher>()
 				.AddScoped<IAuthenticationService, AuthenticationService>();
 
@@ -74,7 +75,7 @@ namespace OfferLocker.API
 				.AddSwagger()
 				.AddControllers()
 				.AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
-
+			//services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 			services
 				.AddMvc()
 				.AddFluentValidation();
