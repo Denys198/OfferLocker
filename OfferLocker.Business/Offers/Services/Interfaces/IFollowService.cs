@@ -1,4 +1,5 @@
-﻿using OfferLocker.Entities.Identity;
+﻿using OfferLocker.Business.Identity.Models;
+using OfferLocker.Entities.Identity;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,7 +12,7 @@ namespace OfferLocker.Business.Offers.Services.Interfaces
         Task FollowUsers(Guid loggedUserId, IList<Guid> userIds);
         Task UnfollowUsers(Guid loggedUserId, IList<Guid> userIds);
 
-        Task<IList<User>> GetFollowingUsersList(Guid loggedUserId);
-        Task<IList<User>> GetFollowersUsersList(Guid loggedUserId);
+        Task<IList<UserModel>> GetFollowingUsersList(Guid loggedUserId);
+        Task<IList<UserModel>> GetFollowersUsersList(Guid loggedUserId);
     }
 }

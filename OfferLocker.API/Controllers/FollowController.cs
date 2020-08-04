@@ -29,6 +29,9 @@ namespace OfferLocker.API.Controllers
             var ext = new OfferLocker.Business.Extensions(_httpContextAccessor);
             var loggedUserId = ext.GetLoggedUserId();
 
+            if (loggedUserId == null)
+                return BadRequest("in need of token");
+
             var result = await _followService.GetFollowingUsersList(Guid.Parse(loggedUserId));
             return Ok(result);
         }
@@ -43,6 +46,8 @@ namespace OfferLocker.API.Controllers
             var ext = new OfferLocker.Business.Extensions(_httpContextAccessor);
             var id = ext.GetLoggedUserId();
 
+            if (id == null)
+                return BadRequest("in need of token");
 
             var result = await _followService.GetFollowersUsersList(Guid.Parse(id));
             return Ok(result);
@@ -59,6 +64,9 @@ namespace OfferLocker.API.Controllers
             var ext = new OfferLocker.Business.Extensions(_httpContextAccessor);
             var loggedUserId = ext.GetLoggedUserId();
 
+            if (loggedUserId == null)
+                return BadRequest("in need of token");
+
             await _followService.FollowUsers(Guid.Parse(loggedUserId), userIds);
             return Ok();
         }
@@ -73,6 +81,9 @@ namespace OfferLocker.API.Controllers
         {
             var extensie = new Business.Extensions(_httpContextAccessor);
             var loggedUserId = extensie.GetLoggedUserId();
+
+            if (loggedUserId == null)
+                return BadRequest("in need of token");
 
             await _followService.UnfollowUsers(Guid.Parse(loggedUserId), userIds);
             return Ok();

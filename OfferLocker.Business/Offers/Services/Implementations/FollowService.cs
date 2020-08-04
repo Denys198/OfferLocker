@@ -1,4 +1,5 @@
-﻿using OfferLocker.Business.Offers.Services.Interfaces;
+﻿using OfferLocker.Business.Identity.Models;
+using OfferLocker.Business.Offers.Services.Interfaces;
 using OfferLocker.Entities.Commons;
 using OfferLocker.Entities.Identity;
 using OfferLocker.Persistence.Commons;
@@ -25,7 +26,7 @@ namespace OfferLocker.Business.Offers.Services.Implementations
         {
             //1. lista curenta users pe care ii urmarim
             var followingList = await _followRepository.GetFollowingByFollower(loggedUserId);
-            var followingIdsList  = followingList.Select(f => f.IdUserFollowed).ToList();
+            var followingIdsList = followingList.Select(f => f.IdUserFollowed).ToList();
 
             //2.  user id exists
             var existingUsers = await _userRepository.GetAll();
@@ -38,7 +39,7 @@ namespace OfferLocker.Business.Offers.Services.Implementations
                 .Distinct();
 
             //4. add to db
-            foreach(var id in uniquesUsersIds)
+            foreach (var id in uniquesUsersIds)
             {
                 var newFollowEntity = new Follow(loggedUserId, id);
                 await _followRepository.Add(newFollowEntity);
@@ -48,23 +49,34 @@ namespace OfferLocker.Business.Offers.Services.Implementations
             //await _followRepository.AddRange(uniquesUsersIds.Select(i => new Follow(loggedUserId, i)).ToList());
         }
 
-        public async Task<IList<User>> GetFollowersUsersList(Guid loggedUserId)
+        public async Task<IList<UserModel>> GetFollowersUsersList(Guid loggedUserId)
         {
             var followedList = await _followRepository.GetFollowersByFollowed(loggedUserId);
 
-            var users = followedList.Select(f => f.Follower).ToList();
+            var users = followedList.Select(f => new UserModel
+
+            {
+                Id = f.Follower.Id,
+                Email = f.Follower.Email,
+                FullName = f.Follower.FullName
+            }).ToList();
             return users;
         }
 
-        public async Task<IList<User>> GetFollowingUsersList(Guid loggedUserId)
+        public async Task<IList<UserModel>> GetFollowingUsersList(Guid loggedUserId)
         {
             var followingList = await _followRepository.GetFollowingByFollower(loggedUserId);
+            var users = followingList.Select(f => new UserModel
+            {
+                Id = f.Followed.Id,
+                Email = f.Followed.Email,
+                FullName = f.Followed.FullName
+            }).ToList();
 
-            var users = followingList.Select(f => f.Followed).ToList();
             return users;
         }
 
-        public async  Task UnfollowUsers(Guid loggedUserId, IList<Guid> userIds)
+        public async Task UnfollowUsers(Guid loggedUserId, IList<Guid> userIds)
         {
             // 1. lista curenta following
             var unfollowingList = await _followRepository.GetFollowingByFollower(loggedUserId);

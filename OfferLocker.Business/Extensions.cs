@@ -17,7 +17,12 @@ namespace OfferLocker.Business
 
         public string GetLoggedUserId()
         {
-            var result = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == "userId").Value;
+            string result = null;
+            if (_httpContextAccessor.HttpContext.User.Claims.Select(c => c.Type).Contains("userId"))
+            {
+                result = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == "userId").Value;
+            }
+
             return result;
         }
     }

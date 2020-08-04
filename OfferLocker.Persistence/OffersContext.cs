@@ -90,14 +90,14 @@ namespace OfferLocker.Persistence
                 .HasOne(u => u.Followed)
                 .WithMany(u => u.Followers)
                 .HasForeignKey(u => u.IdUserFollowed)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.Restrict);
 
 
             modelBuilder.Entity<Follow>()
                .HasOne(u => u.Follower)
                .WithMany(u => u.Following)
                .HasForeignKey(u => u.IdUserFollower)
-               .OnDelete(DeleteBehavior.NoAction);
+               .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
