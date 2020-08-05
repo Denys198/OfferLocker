@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace OfferLocker.Persistence.Migrations
 {
-    public partial class NewMigration : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -223,6 +223,29 @@ namespace OfferLocker.Persistence.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Follow",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    IdUserFollower = table.Column<Guid>(nullable: false),
+                    IdUserFollowed = table.Column<Guid>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Follow", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Follow_Users_IdUserFollowed",
+                        column: x => x.IdUserFollowed,
+                        principalTable: "Users",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Follow_Users_IdUserFollower",
+                        column: x => x.IdUserFollower,
+                        principalTable: "Users",
+                        principalColumn: "Id");
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_CampusCommunities_FacultyId",
                 table: "CampusCommunities",
@@ -242,6 +265,16 @@ namespace OfferLocker.Persistence.Migrations
                 name: "IX_Faculties_UniversityId",
                 table: "Faculties",
                 column: "UniversityId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Follow_IdUserFollowed",
+                table: "Follow",
+                column: "IdUserFollowed");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Follow_IdUserFollower",
+                table: "Follow",
+                column: "IdUserFollower");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Meetups_Name",
@@ -286,6 +319,9 @@ namespace OfferLocker.Persistence.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Category");
+
+            migrationBuilder.DropTable(
+                name: "Follow");
 
             migrationBuilder.DropTable(
                 name: "Meetups");

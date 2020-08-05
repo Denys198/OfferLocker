@@ -26,6 +26,7 @@ using OfferLocker.Business.Offers;
 using OfferLocker.Business.Offers.Services.Implementations;
 using OfferLocker.Business.Offers.Services.Interfaces;
 using OfferLocker.Persistence;
+using OfferLocker.Persistence.Commons;
 using OfferLocker.Persistence.Categories;
 using OfferLocker.Persistence.Identity;
 using OfferLocker.Persistence.Meetups;
@@ -52,6 +53,7 @@ namespace OfferLocker.API
 				.AddScoped<IPhotosService, PhotosService>()
 				.AddScoped<ICategoriesService, CategoriesService>()
 				.AddScoped<IMeetupsService, MeetupsService>()
+				.AddScoped<IFollowService, FollowService>()
 				.AddScoped<IPasswordHasher, PasswordHasher>()
 				.AddScoped<IAuthenticationService, AuthenticationService>();
 
@@ -62,8 +64,9 @@ namespace OfferLocker.API
 					config.UseSqlServer(Configuration.GetConnectionString("OffersConnection")))
 				.AddScoped<IOffersRepository, OffersRepository>()
 				.AddScoped<IMeetupsRepository,MeetupsRepository>()
+				.AddScoped<IUserRepository, UserRepository>()
+				.AddScoped<IFollowRepository, FollowRepository>();
 				.AddScoped<ICategoriesRepository, CategoriesRepository>()
-				.AddScoped<IUserRepository, UserRepository>();
 
 			services
 				.AddAutoMapper(c =>
@@ -77,7 +80,7 @@ namespace OfferLocker.API
 				.AddSwagger()
 				.AddControllers()
 				.AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
-
+			//services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 			services
 				.AddMvc()
 				.AddFluentValidation();

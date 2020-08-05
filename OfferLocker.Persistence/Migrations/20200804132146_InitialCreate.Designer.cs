@@ -10,8 +10,8 @@ using OfferLocker.Persistence;
 namespace OfferLocker.Persistence.Migrations
 {
     [DbContext(typeof(OffersContext))]
-    [Migration("20200803151050_NewMigration")]
-    partial class NewMigration
+    [Migration("20200804132146_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -77,6 +77,27 @@ namespace OfferLocker.Persistence.Migrations
                     b.HasIndex("UniversityId");
 
                     b.ToTable("Faculties");
+                });
+
+            modelBuilder.Entity("OfferLocker.Entities.Commons.Follow", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("IdUserFollowed")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("IdUserFollower")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdUserFollowed");
+
+                    b.HasIndex("IdUserFollower");
+
+                    b.ToTable("Follow");
                 });
 
             modelBuilder.Entity("OfferLocker.Entities.Commons.University", b =>
@@ -309,6 +330,21 @@ namespace OfferLocker.Persistence.Migrations
                         .WithMany("Faculties")
                         .HasForeignKey("UniversityId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("OfferLocker.Entities.Commons.Follow", b =>
+                {
+                    b.HasOne("OfferLocker.Entities.Identity.User", "Followed")
+                        .WithMany("Followers")
+                        .HasForeignKey("IdUserFollowed")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("OfferLocker.Entities.Identity.User", "Follower")
+                        .WithMany("Following")
+                        .HasForeignKey("IdUserFollower")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("OfferLocker.Entities.Identity.Student", b =>
