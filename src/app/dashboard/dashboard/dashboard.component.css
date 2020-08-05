@@ -1,0 +1,23 @@
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+h1{
+  font-size: 30px;
+}
+
+.cards {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+main {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 50px 0;
+  font-size: 27px;
+}

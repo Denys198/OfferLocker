@@ -1,0 +1,23 @@
+<app-header></app-header>
+
+<main>
+  <h1>My Campus Communities</h1>
+
+  <div class="cards">
+    <tile *ngFor="let campus of campusList" label="{{campus.name}}" background="{{campus.backgroundImage}}"
+      (click)="goToCampus(campus.id)"></tile>
+
+  </div>
+  <div>
+
+    <div class="page-container"></div>
+    <br><br>
+    <h1>Categories</h1>
+    <div class="cards">
+      <tile *ngFor="let category of categoryList" label="{{category.name}}" background="{{category.backgroundImage}}"
+        (click)="goToCategory(category.id)"></tile>
+    </div>
+
+  </div>
+</main>
+<app-footer></app-footer>
