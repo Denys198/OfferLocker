@@ -1,0 +1,48 @@
+<app-header></app-header>
+
+<main>
+  <section id="community">
+    <h1>{{communityName}}</h1>
+
+    <div id="community-info">
+      <img src="{{placeholder}}" alt="Community picture">
+
+      <div id="community-details">
+        <h3 class="type">Community type: {{communityType}}</h3>
+        <p id="community-descr">{{ userDescription }}</p>
+        <app-button class="join">Join</app-button>
+      </div>
+    </div>
+  </section>
+
+  <section id="offers-section">
+    <h2>Active offers</h2>
+
+    <div id="offers">
+      <tile></tile>
+      <tile></tile>
+      <tile></tile>
+      <tile></tile>
+    </div>
+  </section>
+
+  <section id="meetups-section">
+    <h2>Next meetups</h2>
+
+    <div id="meetups">
+      <tile></tile>
+      <tile></tile>
+      <tile></tile>
+      <tile></tile>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <h2>User reviews</h2>
+    <review></review>
+    <review></review>
+    <review></review>
+  </section>
+</main>
+
+<app-footer></app-footer>

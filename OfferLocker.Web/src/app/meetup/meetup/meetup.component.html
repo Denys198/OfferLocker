@@ -1,0 +1,21 @@
+<app-header></app-header>
+
+<main>
+  <section id="user">
+    <h1>Meetup: {{meetupName}}</h1>
+
+    <div id="meetup-info">
+      <div id="meetup-details">
+        <h2>Community: {{communityName}}</h2>
+        <p id="meetup-descr">{{ meetupDescription }}</p>
+        <div class="line">
+          <p id="date">Date: {{meetupDate}}</p>
+          <app-button class="join">{{buttonName}}</app-button>
+        </div>
+      </div>
+      <img src="{{placeholder}}" alt="Meetup picture">
+    </div>
+  </section>
+</main>
+
+<app-footer></app-footer>

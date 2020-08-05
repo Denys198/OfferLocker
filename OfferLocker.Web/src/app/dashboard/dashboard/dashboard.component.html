@@ -1,0 +1,57 @@
+<app-header></app-header>
+
+<main>
+  <h1>My Campus Communities</h1>
+
+  <div class="cards">
+    <tile *ngFor="let campus of campusList" label="{{campus.name}}" background="{{campus.backgroundImage}}"
+      (click)="goToCampus(campus.id)"></tile>
+
+  </div>
+  <div>
+
+    <div class="page-container"></div>
+    <br><br>
+    <h1>Categories</h1>
+    <div class="cards">
+      <tile *ngFor="let category of categoryList" label="{{category.name}}" background="{{category.backgroundImage}}"
+        (click)="goToCategory(category.id)"></tile>
+    </div>
+
+  </div>
+
+  <div class="page-container">
+    <h1>My Campus Communities</h1>
+    <div class="cards">
+    <tile label="All Offers"
+              icon="list"
+              (click)="goToPage('list')"></tile>
+    </div>
+
+    <h1>Categories</h1>
+    <div class="cards">
+    <tile label="All Categories"
+              icon="list"
+              (click)="goToPage('list')"></tile>
+    </div>
+
+    <div >
+      <br><br>
+    <h1>Create Offer</h1>
+    <br><br>
+    <tile label="Create Offer"
+              icon="create"
+              (click)="goToPage('create-offer')"></tile>
+            </div>
+
+    <div >
+      <br><br>
+    <h1>Notifications</h1>
+    <br><br>
+    <tile label="Notifications"
+              icon="notifications"
+              (click)="goToPage('notifications')"></tile>
+            </div>
+ </div>
+</main>
+<app-footer></app-footer>
