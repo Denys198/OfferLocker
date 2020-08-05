@@ -1,6 +1,4 @@
 ﻿using OfferLocker.Business.Offers.Models.University;
-using OfferLocker.Entities.Commons;
-
 using System;
 using System.Threading.Tasks;
 

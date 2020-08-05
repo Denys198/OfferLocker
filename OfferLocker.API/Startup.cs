@@ -8,10 +8,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using OfferLocker.API.Extensions;
+using OfferLocker.Business.Categories;
+using OfferLocker.Business.Categories.Services.Implementations;
+using OfferLocker.Business.Categories.Services.Interfaces;
 using OfferLocker.Business.Identity;
 using OfferLocker.Business.Identity.Models;
 using OfferLocker.Business.Identity.Services.Implementations;
@@ -25,6 +27,7 @@ using OfferLocker.Business.Offers.Services.Implementations;
 using OfferLocker.Business.Offers.Services.Interfaces;
 using OfferLocker.Persistence;
 using OfferLocker.Persistence.Commons;
+using OfferLocker.Persistence.Categories;
 using OfferLocker.Persistence.Identity;
 using OfferLocker.Persistence.Meetups;
 using OfferLocker.Persistence.Offers;
@@ -63,12 +66,14 @@ namespace OfferLocker.API
 				.AddScoped<IMeetupsRepository,MeetupsRepository>()
 				.AddScoped<IUserRepository, UserRepository>()
 				.AddScoped<IFollowRepository, FollowRepository>();
+				.AddScoped<ICategoriesRepository, CategoriesRepository>()
 
 			services
 				.AddAutoMapper(c =>
 				{
 					c.AddProfile<OffersMappingProfile>();
 					c.AddProfile<MeetupsMappingProfile>();
+					c.AddProfile<CategoriesMappingProfile>();
 					c.AddProfile<IdentityMappingProfile>();
 				}, typeof(OffersService))
 				.AddHttpContextAccessor()

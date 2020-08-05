@@ -1,4 +1,3 @@
-﻿
 using OfferLocker.Entities.Commons;
 using System.Collections;
 using System.Collections.Generic;

@@ -6,14 +6,14 @@ namespace OfferLocker.Entities.Offers
 {
 	public sealed class Offer : Entity
 	{
-		public Offer(string name, string description, float price) : base()
+		public Offer(string name, string description, float price, Guid categoryId) : base()
 		{
 			Name = name;
 			Description = description;
 			Price = price;
+			CategoryId = categoryId;
 			Photos = new List<Photo>();
 			Comments = new List<OfferComment>();
-			Categories = new List<Category>();
 		}
 
 		public string Name { get; set; }
@@ -22,11 +22,11 @@ namespace OfferLocker.Entities.Offers
 
 		public float Price { get; set; }
 
+		public Guid CategoryId { get; set; }
+
 		public ICollection<Photo> Photos { get; private set; }
 
 		public ICollection<OfferComment> Comments { get; private set; }
-
-		public ICollection<Category> Categories { get; private set; }
 
 		public void AddComment(OfferComment comment)
 		{
@@ -43,26 +43,12 @@ namespace OfferLocker.Entities.Offers
 			}
 		}
 
-		public void AddCategory(Category category)
-		{
-			this.Categories.Add(category);
-		}
-
-		public void RemoveCategory(Guid categoryId)
-		{
-			var category = this.Categories.FirstOrDefault(c => c.Id == categoryId);
-
-			if (category != null)
-			{
-				this.Categories.Remove(category);
-			}
-		}
-
-		public void Update(string name, string description, float price)
+		public void Update(string name, string description, float price, Guid categoryId)
 		{
 			Name = name;
 			Description = description;
 			Price = price;
+			CategoryId = categoryId;
 		}
 	}
 }

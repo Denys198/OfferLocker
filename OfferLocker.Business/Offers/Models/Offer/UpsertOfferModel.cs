@@ -1,4 +1,5 @@
-﻿
+﻿using System;
+
 namespace OfferLocker.Business.Offers.Models.Offer
 {
 	public sealed class UpsertOfferModel
@@ -8,5 +9,7 @@ namespace OfferLocker.Business.Offers.Models.Offer
 		public string Description { get; set; }
 
 		public float Price { get; set; }
+
+		public Guid CategoryId { get; set; }
 	}
 }

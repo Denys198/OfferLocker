@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
 using AutoMapper;
 using OfferLocker.Business.Offers.Extensions;
 using OfferLocker.Business.Offers.Models.Offer;
@@ -59,7 +58,7 @@ namespace OfferLocker.Business.Offers.Services.Implementations
 		{
 			var offer = await _repository.GetById(id);
 
-			offer.Update(model.Name, model.Description, model.Price);
+			offer.Update(model.Name, model.Description, model.Price, model.CategoryId);
 
 			_repository.Update(offer);
 			await _repository.SaveChanges();
