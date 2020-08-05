@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using LinqBuilder.Core;
 using Microsoft.EntityFrameworkCore;
@@ -16,5 +17,10 @@ namespace OfferLocker.Persistence.Commons
 
         public async Task<int> CountAsync()
             => await this.context.Universities.CountAsync();
+
+        public async Task<List<University>> GetUniversities()
+        {
+            return await context.Set<University>().ToListAsync();
+        }
     }
 }

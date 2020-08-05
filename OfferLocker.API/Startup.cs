@@ -24,6 +24,7 @@ using OfferLocker.Business.Offers;
 using OfferLocker.Business.Offers.Services.Implementations;
 using OfferLocker.Business.Offers.Services.Interfaces;
 using OfferLocker.Persistence;
+using OfferLocker.Persistence.Commons;
 using OfferLocker.Persistence.Identity;
 using OfferLocker.Persistence.Meetups;
 using OfferLocker.Persistence.Offers;
@@ -51,6 +52,12 @@ namespace OfferLocker.API
 				.AddScoped<IMeetupsService, MeetupsService>()
 				.AddScoped<IPasswordHasher, PasswordHasher>()
 				.AddScoped<IAuthenticationService, AuthenticationService>();
+			services
+				.AddScoped<IUniversityService, UniversityService>()
+				.AddScoped<IFacultyService, FacultyService>()
+				.AddScoped<IStudentService, StudentService>()
+				.AddScoped<ICampusCommunityService, CampusCommunityService>()
+				.AddScoped<IUserTypeService, UserTypeService>();
 
 			AddAuthentication(services);
 
@@ -60,6 +67,12 @@ namespace OfferLocker.API
 				.AddScoped<IOffersRepository, OffersRepository>()
 				.AddScoped<IMeetupsRepository,MeetupsRepository>()
 				.AddScoped<IUserRepository, UserRepository>();
+			services
+				.AddScoped<IUniversityRepository, UniversityRepository>()
+				.AddScoped<IFacultyRepository, FacultyRepository>()
+				.AddScoped<IStudentRepository, StudentRepository>()
+				.AddScoped<ICampusCommunityRepository, CampusCommunityRepository>()
+				.AddScoped<IUserTypeRepository, UserTypeRepository>();
 
 			services
 				.AddAutoMapper(c =>

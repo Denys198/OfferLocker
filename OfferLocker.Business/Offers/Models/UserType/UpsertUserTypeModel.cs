@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OfferLocker.Business.Offers.Models.UserType
 {
-    public sealed class CreateUserTypeModel
+    public sealed class UpsertUserTypeModel
     {
         public string Name { get; set; }
         public string Description { get; set; }

@@ -26,5 +26,15 @@ namespace OfferLocker.Entities.Commons
         public Guid IdUser { get; set; }
 
         public ICollection<User> Users { get; private set; }
+
+        public void Update(string name, string description, byte[] image, string link, int studentsNumber, Guid idUser)
+        {
+            this.Name = name;
+            this.Description = description;
+            this.Image = image;
+            this.Link = link;
+            this.StudentsNumber = studentsNumber;
+            this.IdUser = idUser;
+        }
     }
 }
