@@ -1,0 +1,61 @@
+<app-header></app-header>
+
+<main>
+  <h1>
+    Create Offer
+  </h1>
+
+  <div class="flex-row-space-around">
+
+    <section class="form-section">
+      <form [formGroup]="formGroup">
+        <div class="form-group">
+
+          <h2>Offer Name:</h2>
+          <input type="text" placeholder="Enter name" formControlName="title">
+
+          <h2>Description:</h2>
+          <input type="text" placeholder="Enter description" formControlName="description">
+
+          <h2>Category:</h2>
+          <input type="datalist" formControlName="category">
+
+          <h2>Price:</h2>
+          <input type="text" placeholder="Enter price" formControlName="price">
+        </div>
+
+        <div class="photos">
+          <label class="photos-title">Photos</label>
+
+          <div class="photos-list">
+            <div *ngIf="photos.length > 0; else noPhotos">
+
+            </div>
+            <ng-template #noPhotos>
+              <label *ngIf="photos.length === 0">No photos available</label>
+            </ng-template>
+
+            <div class="add-photos" *ngIf="!isFormDisabled">
+              <div class="photo-file-container">
+
+                <img class="photo-file" *ngFor="let photo of photos" [src]="photo">
+              </div>
+
+              <input #Image type="file" (change)="handleFileInput($event.target.files)" />
+              <img class="photo-file" [src]="imageUrl">
+            </div>
+
+            <div class="added-photos" *ngIf="isFormDisabled">
+              <img class="photo-file" *ngFor="let photo of photos" [src]="photo">
+            </div>
+          </div>
+
+        </div>
+
+        <app-submit-button></app-submit-button>
+
+      </form>
+    </section>
+  </div>
+</main>
+<app-footer></app-footer>

@@ -1,0 +1,17 @@
+<app-header></app-header>
+
+<main>
+  <div class="page-container">
+    <h1>
+      Offer List
+    </h1>
+
+    <div class="cards">
+      <tile *ngFor="let offer of offerList" label="{{offer.title}}" background="../../assets/images/undraw_gifts_btw0.png"
+        (click)="goToOffer(offer.id)"></tile>
+
+    </div>
+  </div>
+</main>
+
+<app-footer></app-footer>

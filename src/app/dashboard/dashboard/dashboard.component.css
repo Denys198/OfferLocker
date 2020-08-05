@@ -1,0 +1,40 @@
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+h2{
+  font-size: 28px;
+  margin: 20px;
+}
+
+a:link, a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+.cards {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+main {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 50px 0;
+  font-size: 27px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+app-tile :hover {
+  transform: scale(1.1);
+}
