@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OfferLocker.Business.Offers.Models.CampusCommunity
 {
-    public sealed class CreateCampusCommunityModel
+    public sealed class UpsertCampusCommunityModel
     {
         public string Name { get; set; }
         public string Description { get; set; }

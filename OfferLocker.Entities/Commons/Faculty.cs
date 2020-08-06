@@ -12,5 +12,10 @@ namespace OfferLocker.Entities.Commons
         public string Name { get; set; }
         public ICollection<Student> Students { get; private set; }
         public ICollection<CampusCommunity> CampusCommunities { get; private set; }
+
+        public void Update(string name)
+        {
+            this.Name = name;
+        }
     }
 }

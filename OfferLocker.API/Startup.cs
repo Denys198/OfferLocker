@@ -56,6 +56,12 @@ namespace OfferLocker.API
 				.AddScoped<IFollowService, FollowService>()
 				.AddScoped<IPasswordHasher, PasswordHasher>()
 				.AddScoped<IAuthenticationService, AuthenticationService>();
+			services
+				.AddScoped<IUniversityService, UniversityService>()
+				.AddScoped<IFacultyService, FacultyService>()
+				.AddScoped<IStudentService, StudentService>()
+				.AddScoped<ICampusCommunityService, CampusCommunityService>()
+				.AddScoped<IUserTypeService, UserTypeService>();
 
 			AddAuthentication(services);
 
@@ -64,9 +70,15 @@ namespace OfferLocker.API
 					config.UseSqlServer(Configuration.GetConnectionString("OffersConnection")))
 				.AddScoped<IOffersRepository, OffersRepository>()
 				.AddScoped<IMeetupsRepository,MeetupsRepository>()
-				.AddScoped<IUserRepository, UserRepository>()
-				.AddScoped<IFollowRepository, FollowRepository>();
-				.AddScoped<ICategoriesRepository, CategoriesRepository>()
+				.AddScoped<IUserRepository, UserRepository>();
+			services
+				.AddScoped<IUniversityRepository, UniversityRepository>()
+				.AddScoped<IFacultyRepository, FacultyRepository>()
+				.AddScoped<IStudentRepository, StudentRepository>()
+				.AddScoped<ICampusCommunityRepository, CampusCommunityRepository>()
+				.AddScoped<IUserTypeRepository, UserTypeRepository>()
+				.AddScoped<IFollowRepository, FollowRepository>()
+				.AddScoped<ICategoriesRepository, CategoriesRepository>();
 
 			services
 				.AddAutoMapper(c =>

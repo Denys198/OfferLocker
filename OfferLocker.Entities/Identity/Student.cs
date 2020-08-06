@@ -23,5 +23,15 @@ namespace OfferLocker.Entities.Identity
         public string Specialization { get; set; }
         public int PhoneNumber { get; set; }
         public string Email { get; set; }
+
+        public void Update(string name, int age, int year, string specialization, int phoneNumber, string email)
+        {
+            this.Name = name;
+            this.Age = age;
+            this.Year = year;
+            this.Specialization = specialization;
+            this.PhoneNumber = phoneNumber;
+            this.Email = email;
+        }
     }
 }

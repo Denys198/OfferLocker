@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OfferLocker.Business.Offers.Models.Student
 {
-    public sealed class CreateStudentModel
+    public sealed class UpsertStudentModel
     {
         public string Name { get; set; }
         public int Age { get; set; }
