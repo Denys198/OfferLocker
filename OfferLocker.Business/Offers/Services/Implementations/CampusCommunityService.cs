@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace OfferLocker.Business.Offers.Services.Implementations
 {
-    public sealed class CampusCommunityService : ICampusCommunityService
+    public sealed class CampusCommunityService 
     {
         private readonly ICampusCommunityRepository repository;
         private readonly IMapper mapper;

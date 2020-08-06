@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace OfferLocker.Persistence.Meetups
 {
-	public sealed class MeetupsRepository : Repository<Meetup>, IMeetupsRepository
-	{
+    public sealed class MeetupsRepository : Repository<Meetup>, IMeetupsRepository
+    {
         public MeetupsRepository(OffersContext context) : base(context) { }
 
         public async Task<IList<Meetup>> Get(ISpecification<Meetup> spec)
