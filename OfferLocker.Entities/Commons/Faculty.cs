@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-
 using OfferLocker.Entities.Identity;
 
 namespace OfferLocker.Entities.Commons

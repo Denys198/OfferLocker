@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using LinqBuilder.Core;
 using Microsoft.EntityFrameworkCore;
-
 using OfferLocker.Entities.Identity;
 
 namespace OfferLocker.Persistence.Identity
