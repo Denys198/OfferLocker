@@ -1,4 +1,3 @@
-import { SignupComponent } from './signup/signup.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthenticationComponent } from './authentication/authentication.component';
@@ -7,15 +6,11 @@ import { SharedModule } from 'src/app/shared/shared.module';
 
 const routes: Routes = [
   {
-    path: 'login',
+    path: '',
     pathMatch: 'full',
     component: AuthenticationComponent,
   },
-  {
-    path: 'signup',
-    pathMatch: 'full',
-    component: SignupComponent,
-  }
+
 ];
 
 @NgModule({

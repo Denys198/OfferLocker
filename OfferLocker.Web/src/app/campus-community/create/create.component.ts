@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
 
+
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -9,15 +10,15 @@ import { SharedModule } from 'src/app/shared/shared.module';
 })
 export class CreateComponent implements OnInit {
   public form: FormGroup;
+
   constructor() { }
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      offerName: new FormControl('', [Validators.required]),
-      offerDetails: new FormControl('', []),
+      communityName: new FormControl('', [Validators.required]),
+      communityDetails: new FormControl('', []),
     });
   }
-
   public get isFormValid(): boolean {
     return this.form.valid;
   }

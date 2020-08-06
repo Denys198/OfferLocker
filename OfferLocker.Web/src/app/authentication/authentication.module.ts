@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule, FormsModule, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { SignupComponent } from './signup/signup.component';
 
 
 @NgModule({
-  declarations: [AuthenticationComponent, SignupComponent],
+  declarations: [AuthenticationComponent],
   imports: [
     CommonModule,
     AuthenticationRoutingModule,
@@ -20,6 +19,7 @@ import { SignupComponent } from './signup/signup.component';
     FormsModule,
     SharedModule
   ],
-  exports: [AuthenticationComponent, SignupComponent]
+  exports: [AuthenticationComponent],
+
 })
 export class AuthenticationModule { }

@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from "src/environments/environment";
 
 import { OfferModel } from '../models';
 import { OffersModel } from '../models/offers.model';
@@ -11,7 +10,7 @@ import { OffersModel } from '../models/offers.model';
 })
 export class OfferService {
 
-  private endpoint: string = `${environment.apiBase}/offers`;
+  private endpoint: string = 'https://localhost:5001/api/v1/offers';
 
   private httpOptions = {
     headers: new HttpHeaders({

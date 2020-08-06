@@ -1,15 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CampusDetailsComponent } from './campus-details/campus-details.component';
+import { CampusListComponent } from './campus-list/campus-list.component';
 
-import { CampusCommunityComponent } from './campus-community.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'community-list',
     pathMatch: 'full',
-    component: CampusCommunityComponent,
-  }
+    component: CampusListComponent,
+  },
+  {
+    path: 'community-details/:id',
+    pathMatch: 'full',
+    component: CampusDetailsComponent,
+  },
 ];
 
 @NgModule({

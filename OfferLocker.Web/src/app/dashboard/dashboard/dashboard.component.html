@@ -2,41 +2,38 @@
 
 <main>
 
-  <div>
-    <a href="/notifications">
-      <h2>Notifications</h2>
-    </a>
-    <notif-section></notif-section>
-  </div>
-
-  <div class="page-container"></div>
-  <a href="/categories">
-    <h2>Categories</h2>
-  </a>
-  <div class="cards">
-    <tile *ngFor="let category of categoryList" label="{{category.name}}" background="{{category.backgroundImage}}"
-      (click)="goToCategory(category.id)"></tile>
-  </div>
-
-
   <div class="page-container">
-    <h2>My Campus Communities</h2>
+    <h1>Offers</h1>
     <div class="cards">
-      <tile label="All Offers" icon="list" (click)="goToPage('list')"></tile>
+    <tile label="All Offers"
+              icon="list"
+              (click)="goToPage('offer-list')"></tile>
     </div>
-  </div>
 
-  <div class="page-container"></div>
-  <h2> Offer List </h2>
-  <div class="cards">
-    <!-- <tile *ngFor="let offer of offerList" label="{{offer.title}}" background="../../assets/images/undraw_gifts_btw0.png"
-      (click)="goToOffer(offer.id)"></tile> -->
-    <tile></tile>
-    <tile></tile>
-    <tile></tile>
-    <tile></tile>
-  </div>
+    <h1>My Campus Communities</h1>
+    <div class="cards">
+    <tile label="All Campuses"
+              icon="list"
+              (click)="goToPage('community-list')"></tile>
+    </div>
 
+    <h1>Categories</h1>
+    <div class="cards">
+    <tile label="All Categories"
+              icon="list"
+              (click)="goToPage('list')"></tile>
+    </div>
+
+
+
+    <div >
+      <br><br>
+    <h1>Notifications</h1>
+    <br><br>
+    <tile label="Notifications"
+              icon="notifications"
+              (click)="goToPage('notifications')"></tile>
+            </div>
+ </div>
 </main>
-
 <app-footer></app-footer>
