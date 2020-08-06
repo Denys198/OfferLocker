@@ -1,5 +1,7 @@
 ﻿using OfferLocker.Business.Offers.Models.Offer;
+using OfferLocker.Entities.Offers;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace OfferLocker.Business.Offers.Services.Interfaces
@@ -11,6 +13,8 @@ namespace OfferLocker.Business.Offers.Services.Interfaces
 		Task<PaginatedList<OfferModel>> Get(SearchModel model);
 
 		Task<OfferModel> GetById(Guid id);
+
+		Task<IList<OfferModel>> GetByCategory(Guid categoryId);
 
 		Task Update(Guid id, UpsertOfferModel model);
 

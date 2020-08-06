@@ -1,9 +1,7 @@
 ﻿using LinqBuilder.Core;
-using OfferLocker.Entities.Commons;
 using OfferLocker.Entities.Offers;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace OfferLocker.Persistence.Offers
@@ -17,5 +15,7 @@ namespace OfferLocker.Persistence.Offers
 		Task<Offer> GetByIdWithPhotos(Guid id);
 
 		Task<Offer> GetByIdWithComments(Guid id);
+
+		Task<IList<Offer>> GetByCategory(Guid categoryId);
 	}
 }

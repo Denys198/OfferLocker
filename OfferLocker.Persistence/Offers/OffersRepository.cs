@@ -1,5 +1,6 @@
 ﻿using LinqBuilder.Core;
 using Microsoft.EntityFrameworkCore;
+using OfferLocker.Entities.Category;
 using OfferLocker.Entities.Offers;
 using System;
 using System.Collections.Generic;
@@ -28,5 +29,8 @@ namespace OfferLocker.Persistence.Offers
             => await this.context.Offers
                 .Include(offer => offer.Comments)
                 .FirstAsync(offer => offer.Id == id);
+
+        public async Task<IList<Offer>> GetByCategory(Guid categoryId)
+            => await context.Offers.Where(x => x.CategoryId == categoryId).ToListAsync();
     }
 }
