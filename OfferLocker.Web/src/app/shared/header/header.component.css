@@ -1,0 +1,44 @@
+
+header {
+  width: 100%;
+  background-color:#5ac2ce;
+  text-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+}
+
+#header-wrapper {
+  min-height: 8vh;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#project-title {
+  letter-spacing: 2px;
+  margin: 0px;
+  font-size: 28px;
+  font-weight: 400;
+  color:whitesmoke;
+}
+
+ul {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  list-style-type: none;
+  font-size: 21px;
+  letter-spacing: 1px;
+  color:whitesmoke;
+  font-weight: 400;
+}
+
+li {
+  margin: auto 10px;
+}
+
+a:link, a:visited {
+  text-decoration: none;
+  color:whitesmoke;
+}
