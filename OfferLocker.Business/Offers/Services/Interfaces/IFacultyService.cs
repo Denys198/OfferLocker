@@ -1,7 +1,6 @@
 ﻿using OfferLocker.Business.Offers.Models.Faculty;
 using OfferLocker.Business.Offers.Models.Offer;
 using OfferLocker.Entities.Commons;
-
 using System;
 using System.Threading.Tasks;
 

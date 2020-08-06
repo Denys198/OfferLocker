@@ -3,6 +3,7 @@ using OfferLocker.Entities.Offers;
 using OfferLocker.Entities.Identity;
 using OfferLocker.Entities.Commons;
 using OfferLocker.Entities.Meetup;
+using OfferLocker.Entities.Category;
 
 namespace OfferLocker.Persistence
 {
@@ -20,7 +21,9 @@ namespace OfferLocker.Persistence
         public DbSet<Student> Students { get; set; }
         public DbSet<CampusCommunity> CampusCommunities { get; set; }
         public DbSet<UserType> UserTypes { get; set; }
-        public DbSet<Meetup> Meetups { get; set; }
+        public DbSet<Meetup> Meetups { get; set; }     
+        public DbSet<Follow> Follow { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -74,15 +77,27 @@ namespace OfferLocker.Persistence
                 .HasMany(p => p.Users)
                 .WithOne()
                 .OnDelete(DeleteBehavior.Cascade);
-                
+
             modelBuilder.Entity<Category>()
-                .Property(c => c.Id)
-                .IsRequired()
-                .ValueGeneratedNever();
+                .HasIndex(x => x.Name)
+                .IsUnique();
 
             modelBuilder.Entity<Meetup>()
                 .HasIndex(x => x.Name)
                 .IsUnique();
+
+            modelBuilder.Entity<Follow>()
+                .HasOne(u => u.Followed)
+                .WithMany(u => u.Followers)
+                .HasForeignKey(u => u.IdUserFollowed)
+                .OnDelete(DeleteBehavior.Restrict);
+
+
+            modelBuilder.Entity<Follow>()
+               .HasOne(u => u.Follower)
+               .WithMany(u => u.Following)
+               .HasForeignKey(u => u.IdUserFollower)
+               .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

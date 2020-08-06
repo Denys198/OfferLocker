@@ -1,7 +1,6 @@
 ﻿using OfferLocker.Persistence.Commons;
 using OfferLocker.Business.Offers.Models.University;
 using OfferLocker.Entities.Commons;
-
 using AutoMapper;
 using System;
 using System.Threading.Tasks;

@@ -6,7 +6,7 @@ using OfferLocker.Business.Offers.Models.Offer;
 using System;
 using System.Threading.Tasks;
 
-namespace OfferLocker.API.NewFolder
+namespace OfferLocker.API.Controllers
 {
 	[ApiController]
 	[Route("api/v1/meetups")]

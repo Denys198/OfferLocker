@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace OfferLocker.Business.Offers.Models.Category
+namespace OfferLocker.Business.Categories.Models
 {
     public sealed class CategoryModel
     {
