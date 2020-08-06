@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 // initializare string cu url
-const endpoint = 'http://offer-locker.ashbell-platform.com/api/v1/auth';
+const endpoint = 'https://localhost:5001/api/v1/auth';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
   public endpoint: string =
-    'http://offer-locker.ashbell-platform.com/api/v1/auth';
+    'https://localhost:5001/api/v1/auth';
 
   constructor(private readonly httpClient: HttpClient) {}
 

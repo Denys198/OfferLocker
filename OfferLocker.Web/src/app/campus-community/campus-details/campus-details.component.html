@@ -1,0 +1,95 @@
+<app-header></app-header>
+
+<main>
+
+  <div class="flex-row-space-around">
+    <h1>
+      Create Campus Community
+    </h1>
+    <section class="form-section">
+      <form [formGroup]="formGroup">
+      <div class="form-group" id = "community">
+        <h2>Campus-Community Name:</h2>
+        <input type="text" placeholder="Enter offer name" formControlName="title">
+
+      </div>
+
+      <div class="form-group">
+        <p *ngIf="isFormDisabled; else notEditable">{{description}}</p>
+
+        <ng-template #notEditable>
+          <textarea class="community-descr" contenteditable="true"
+            placeholder="Enter campus community description" formControlName="description">{{description}}</textarea>
+        </ng-template>
+        <app-button class="join">Join</app-button>
+      </div>
+
+      <div class="photos">
+        <label class="photos-title">Photos</label>
+
+        <div class="photos-list">
+          <div *ngIf="photos.length > 0; else noPhotos">
+
+          </div>
+          <ng-template #noPhotos>
+            <label *ngIf="photos.length === 0">No photos available</label>
+          </ng-template>
+
+          <div class="add-photos" *ngIf="!isFormDisabled">
+            <div class="photo-file-container">
+
+              <img class="photo-file" *ngFor="let photo of photos" [src]="photo">
+            </div>
+
+            <input #Image type="file" (change)="handleFileInput($event.target.files)" />
+            <img class="photo-file" [src]="imageUrl">
+          </div>
+
+          <div class="added-photos" *ngIf="isFormDisabled">
+            <img class="photo-file" *ngFor="let photo of photos" [src]="photo">
+          </div>
+        </div>
+      </div>
+
+
+      <section  id ="offers-section">
+        <h2> Active offers</h2>
+        <div id ="offers">
+            <tile label="All Offers"
+                      icon="list"
+                      (click)="goToPage('offer-list')"></tile>
+        </div>
+      </section>
+
+      <section id = "meetups-section">
+        <h2>Next meetups</h2>
+        <div id = "meetups">
+          <tile label="All Meetups"
+          icon="list"
+          (click)="goToPage('meetup')"></tile>
+        </div>
+      </section>
+
+      <section  id = "reviews">
+          <h2>User reviews</h2>
+          <review></review>
+          <review></review>
+          <review></review>
+          <review></review>
+      </section>
+
+      <button type="button" *ngIf="isFormDisabled; else saveButton" (click)="startUpdating()"><span> Update
+        campus community</span></button>
+        <ng-template #saveButton>
+      <button type="button" (click)="save()"><span>Save campus community</span></button>
+    </ng-template>
+
+      </form>
+    </section>
+
+    <section class="image-section">
+      <img src="../../../assets/images/undraw_gifts_btw0.png" alt="Community image" />
+    </section>
+  </div>
+</main>
+<app-footer></app-footer>

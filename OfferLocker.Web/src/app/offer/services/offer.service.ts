@@ -10,7 +10,7 @@ import { OffersModel } from '../models/offers.model';
 })
 export class OfferService {
 
-  private endpoint: string = 'http://offer-locker.ashbell-platform.com/api/v1/offers';
+  private endpoint: string = 'https://localhost:5001/api/v1/offers';
 
   private httpOptions = {
     headers: new HttpHeaders({

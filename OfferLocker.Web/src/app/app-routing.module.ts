@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { OfferDetailsComponent } from './offer/offer-details/offer-details.component'
 import { OfferListComponent } from './offer/offer-list/offer-list.component';
+import { CampusListComponent } from './campus-community/campus-list/campus-list.component';
+import { CampusDetailsComponent } from './campus-community/campus-details/campus-details.component';
 
 const routes: Routes = [
 
@@ -19,6 +21,8 @@ const routes: Routes = [
   },
   { path: 'offer-list', component: OfferListComponent },
   { path: 'create-offer', component: OfferDetailsComponent },
+  {path: 'community-list', component: CampusListComponent},
+  {path: 'community-details', component: CampusDetailsComponent},
   {
     path: 'notifications',
     loadChildren: () =>

@@ -20,38 +20,6 @@ export class DashboardComponent implements OnInit{
   public categoryList: Category[];
 
   ngOnInit(): void {
-    this.campusList = [
-      {
-        id: '1',
-        name: 'Campus1',
-        description:
-          'Campus1',
-        backgroundImage: '../../../assets/images/undraw_gifts_btw0.png',
-      },
-
-      {
-        id: '2',
-        name: 'Campus2',
-        description: 'Campus2',
-        backgroundImage: '../../../assets/images/undraw_updated_resume_u4fy.png',
-      },];
-
-    this.categoryList = [
-        {
-          id: '1',
-          name: 'Categoria1',
-          description:
-            'Campus1',
-          backgroundImage: '../../../assets/images/undraw_gifts_btw0.png',
-        },
-
-        {
-          id: '2',
-          name: 'Categoria2',
-          description: 'Campus2',
-          backgroundImage: '../../../assets/images/undraw_updated_resume_u4fy.png',
-        },
-    ];
   }
 
   goToCampus(id:string) : void{

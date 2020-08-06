@@ -1,20 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CampusCommunityRoutingModule } from './campus-community-routing.module';
-import { CampusCommunityComponent } from './campus-community.component';
+
+import { CampusDetailsComponent } from './campus-details/campus-details.component';
+import { CampusListComponent } from './campus-list/campus-list.component';
+import { CreateComponent } from './create/create.component';
+
 
 
 @NgModule({
-  declarations: [CampusCommunityComponent],
+  declarations: [CampusDetailsComponent, CampusListComponent, CreateComponent],
   imports: [
     CommonModule,
     CampusCommunityRoutingModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  exports: [CampusCommunityComponent]
+  exports: [CampusDetailsComponent, CampusListComponent]
 })
 export class CampusCommunityModule { }
