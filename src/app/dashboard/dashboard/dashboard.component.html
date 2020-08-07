@@ -1,0 +1,39 @@
+<app-header></app-header>
+
+<main>
+
+  <div class="page-container">
+    <h1>Offers</h1>
+    <div class="cards">
+    <tile label="All Offers"
+              icon="list"
+              (click)="goToPage('offer-list')"></tile>
+    </div>
+
+    <h1>My Campus Communities</h1>
+    <div class="cards">
+    <tile label="All Campuses"
+              icon="list"
+              (click)="goToPage('community-list')"></tile>
+    </div>
+
+    <h1>Categories</h1>
+    <div class="cards">
+    <tile label="All Categories"
+              icon="list"
+              (click)="goToPage('list')"></tile>
+    </div>
+
+
+
+    <div >
+      <br><br>
+    <h1>Notifications</h1>
+    <br><br>
+    <tile label="Notifications"
+              icon="notifications"
+              (click)="goToPage('notifications')"></tile>
+            </div>
+ </div>
+</main>
+<app-footer></app-footer>

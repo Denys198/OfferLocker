@@ -1,0 +1,117 @@
+main {
+  width: 80%;
+  margin: 0 auto;
+}
+
+h1 {
+  margin: 50px 0 30px 0;
+  font-size: 30px;
+}
+
+.flex-row-space-around {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.image-section img {
+  width: 30vw;
+}
+
+.form-section {
+  padding: 50px;
+  width: 40vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 0px 8px rgba(0, 23, 87, 0.08);
+}
+
+.add-photos {
+  display: flex;
+  flex-direction: column;
+}
+
+.photo-file {
+  width: 50px;
+}
+
+.photos-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.photos {
+  display: flex;
+  flex-direction: row;
+}
+
+.offer-description {
+  width: 99%;
+  min-height: 150px;
+  font-family: "Open Sans";
+  font-size: 16px;
+  font-weight: 200;
+}
+
+.form-group {
+  overflow: hidden;
+}
+
+label {
+  margin-right: 10px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+input[type="text"] {
+  width: 100%;
+  display: block;
+  border: none;
+  padding: 6px 30px;
+  font-family: "Open Sans";
+  box-sizing: border-box;
+  text-align: center;
+  outline: none;
+  font-size: 20px;
+  font-weight: 600;
+  background-color: white;
+}
+
+input[type="text"]:focus {
+  border-bottom: 1px solid #999;
+}
+
+p {
+  font-size: 16px;
+  font-weight: 200;
+}
+
+button {
+  background-color: #27ae60;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  width: 20%;
+  height: 40px;
+  border-radius: 8px;
+  font-family: "Open Sans";
+  font-weight: bold;
+}
+
+button span {
+  color: white !important;
+}
+
+@media (max-width: 900px) {
+  .flex-column-space-around {
+    flex-direction: column;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
