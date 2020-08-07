@@ -1,0 +1,17 @@
+<app-header></app-header>
+
+<main>
+  <div class="page-container">
+    <h1>
+      Available Meetups
+    </h1>
+
+    <div class="cards">
+      <tile *ngFor="let meetup of meetupList" label="{{meetup.name}}" background="../../assets/images/meetup_icon.png"
+        (click)="goToMeetup(meetup.id)"></tile>
+
+    </div>
+  </div>
+</main>
+
+<app-footer></app-footer>

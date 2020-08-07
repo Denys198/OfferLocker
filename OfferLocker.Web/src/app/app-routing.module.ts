@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { OfferDetailsComponent } from './offer/offer-details/offer-details.component'
+import { OfferDetailsComponent } from './offer/offer-details/offer-details.component';
 import { OfferListComponent } from './offer/offer-list/offer-list.component';
 import { CampusListComponent } from './campus-community/campus-list/campus-list.component';
 import { CampusDetailsComponent } from './campus-community/campus-details/campus-details.component';
+import { MeetupListComponent } from './meetup/meetup-list/meetup-list.component';
+import { MeetupDetailsComponent } from './meetup/meetup-details/meetup-details.component';
 
 const routes: Routes = [
-
   {
     path: '',
     pathMatch: 'full',
@@ -21,12 +22,14 @@ const routes: Routes = [
   },
   { path: 'offer-list', component: OfferListComponent },
   { path: 'create-offer', component: OfferDetailsComponent },
-  {path: 'community-list', component: CampusListComponent},
-  {path: 'community-details', component: CampusDetailsComponent},
+  { path: 'community-list', component: CampusListComponent },
+  { path: 'community-details', component: CampusDetailsComponent },
   {
     path: 'notifications',
     loadChildren: () =>
-      import('./notifications/notifications.module').then((m) => m.NotificationsModule),
+      import('./notifications/notifications.module').then(
+        (m) => m.NotificationsModule
+      ),
   },
   {
     path: 'dashboard',
@@ -35,24 +38,40 @@ const routes: Routes = [
   },
   {
     path: 'offer',
-    loadChildren: () => import('./offer/offer.module').then((m) => m.OfferModule),
+    loadChildren: () =>
+      import('./offer/offer.module').then((m) => m.OfferModule),
   },
   {
     path: 'user',
-    loadChildren: () => import('./user-profile/user-profile.module').then((m) => m.UserProfileModule),
+    loadChildren: () =>
+      import('./user-profile/user-profile.module').then(
+        (m) => m.UserProfileModule
+      ),
   },
   {
     path: 'community',
-    loadChildren: () => import('./campus-community/campus-community.module').then((m) => m.CampusCommunityModule),
+    loadChildren: () =>
+      import('./campus-community/campus-community.module').then(
+        (m) => m.CampusCommunityModule
+      ),
   },
   {
     path: 'meetup',
-    loadChildren: () => import('./meetup/meetup.module').then((m) => m.MeetupModule),
+    loadChildren: () =>
+      import('./meetup/meetup.module').then((m) => m.MeetupModule),
+  },
+  {
+    path: 'meetup-list',
+    component: MeetupListComponent,
+  },
+  {
+    path: 'create-meetup',
+    component: MeetupDetailsComponent
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

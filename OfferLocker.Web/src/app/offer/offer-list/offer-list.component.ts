@@ -27,7 +27,7 @@ export class OfferListComponent implements OnInit {
 
   goToOffer(id: string): void {
     console.log(id);
-    this.router.navigate(['/offer/details/${id}']);
+    this.router.navigate([`/offer/details/${id}`]);
   }
 
 }

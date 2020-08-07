@@ -1,0 +1,13 @@
+<div [formGroup]="form">
+  <label>Name:</label>
+  <input type="text" formControlName="meetupName" />
+
+  <label>Description:</label>
+  <input type="text" formControlName="meetupDescription" />
+
+  <label>Date:</label>
+  <input type="date" formControlName="meetupDate" />
+</div>
+
+<app-submit-button (onClick)="clicked()" [formState]="isFormValid"
+  >Submit</app-submit-button>

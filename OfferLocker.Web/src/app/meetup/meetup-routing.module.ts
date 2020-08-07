@@ -1,19 +1,24 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { MeetupComponent } from './meetup/meetup.component';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { MeetupListComponent } from './meetup-list/meetup-list.component';
+import { MeetupDetailsComponent } from './meetup-details/meetup-details.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'meetup-list',
     pathMatch: 'full',
-    component: MeetupComponent,
-  }
+    component: MeetupListComponent,
+  },
+  {
+    path: 'details/:id',
+    pathMatch: 'full',
+    component: MeetupDetailsComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class MeetupRoutingModule { }

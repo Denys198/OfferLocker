@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-submit-button',
   templateUrl: './submit-button.component.html',
-  styleUrls: ['./submit-button.component.css']
+  styleUrls: ['./submit-button.component.css'],
 })
 export class SubmitButtonComponent implements OnInit {
   @Input()
@@ -12,10 +12,9 @@ export class SubmitButtonComponent implements OnInit {
   @Output()
   public onClick: EventEmitter<any> = new EventEmitter();
 
-  constructor(private readonly router: Router) { }
+  constructor(private readonly router: Router) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   public get buttonDisabled(): boolean {
     if (this.formState) {
@@ -26,7 +25,6 @@ export class SubmitButtonComponent implements OnInit {
 
   public click(event: any): void {
     console.log('submit button, click');
-    this.onClick.emit(event)
+    this.onClick.emit(event);
   }
-
 }
