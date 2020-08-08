@@ -8,14 +8,16 @@
   <section class="form-section">
     <form [formGroup]="formGroup">
       <div class="form-group">
+        <label>Name:</label>
         <input
           type="text"
-          placeholder="Enter a name for your meetup"
+          placeholder="Meetup Name"
           formControlName="name"
         />
       </div>
 
       <div class="form-group">
+        <label>Description:</label>
         <p *ngIf="isFormDisabled; else notEditable1">{{ description }}</p>
 
         <ng-template #notEditable1>
@@ -30,6 +32,7 @@
       </div>
 
       <div class="form-group">
+        <label>Date:</label>
         <p *ngIf="isFormDisabled; else notEditable2">{{ date }}</p>
         <ng-template #notEditable2>
           <input type="date" formControlName="date" />{{
@@ -41,12 +44,11 @@
       <button
         type="button"
         *ngIf="isFormDisabled; else saveButton"
-        (click)="startUpdating()"
-      >
-        <span>Update meetup</span>
+        (click)="startUpdating()">
+        <span>Update</span>
       </button>
       <ng-template #saveButton>
-        <button type="button" (click)="save()"><span>Save meetup</span></button>
+        <app-submit-button (onClick)="save()" [formState]="isFormValid">Submit</app-submit-button>
       </ng-template>
     </form>
   </section>

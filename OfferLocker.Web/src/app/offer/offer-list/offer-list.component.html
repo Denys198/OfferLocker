@@ -3,11 +3,11 @@
 <main>
   <div class="page-container">
     <h1>
-      Offer List
+      Available Offers
     </h1>
 
     <div class="cards">
-      <tile *ngFor="let offer of offerList" label="{{offer.title}}" background="../../assets/images/undraw_gifts_btw0.png"
+      <tile *ngFor="let offer of offerList" label="{{offer.name}}" background="../../assets/images/undraw_gifts_btw0.png"
         (click)="goToOffer(offer.id)"></tile>
 
     </div>

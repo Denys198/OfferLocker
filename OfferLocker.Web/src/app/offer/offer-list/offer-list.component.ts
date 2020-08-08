@@ -19,7 +19,7 @@ export class OfferListComponent implements OnInit {
     private service: OfferService
     ) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.service.getAll().subscribe((data: OffersModel) => {
       this.offerList = data.results;
     });

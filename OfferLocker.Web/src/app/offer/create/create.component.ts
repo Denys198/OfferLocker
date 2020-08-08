@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { Router } from '@angular/router';
+import {OfferService } from '../services/offer.service';
 
 @Component({
   selector: 'app-create',
@@ -8,22 +10,26 @@ import { SharedModule } from 'src/app/shared/shared.module';
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
-  public form: FormGroup;
-  constructor() { }
+  public formGroup: FormGroup;
+  constructor(
+    private router: Router,
+    private service: OfferService,
+  ) { }
 
   ngOnInit(): void {
-    this.form = new FormGroup({
+    this.formGroup = new FormGroup({
       offerName: new FormControl('', [Validators.required]),
-      offerDetails: new FormControl('', []),
+      offerDescription: new FormControl('', []),
+      offerPrice: new FormControl('', [Validators.required]),
     });
   }
 
   public get isFormValid(): boolean {
-    return this.form.valid;
+    return this.formGroup.valid;
   }
 
   public clicked(): void {
-    console.log(this.form.value);
+    console.log(this.formGroup.value);
   }
 
 }

@@ -1,0 +1,16 @@
+button {
+  background-color: #2783ae;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  width: 20%;
+  height: 40px;
+  border-radius: 8px;
+  font-family: "Open Sans";
+  font-weight: bold;
+  color:whitesmoke;
+}
+
+button span {
+  color: white !important;
+}

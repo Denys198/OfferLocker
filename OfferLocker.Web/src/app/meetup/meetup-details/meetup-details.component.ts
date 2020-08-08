@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -26,6 +26,10 @@ export class MeetupDetailsComponent implements OnInit {
     return this.formGroup.get('date').value;
   }
 
+  public get isFormValid(): boolean {
+    return this.formGroup.valid;
+  }
+
   get isFormDisabled(): boolean {
     return this.formGroup.disabled;
   }
@@ -34,15 +38,14 @@ export class MeetupDetailsComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private service: MeetupService
-  ) {}
+    private service: MeetupService) {}
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
       id: new FormControl(),
-      name: new FormControl(),
-      description: new FormControl(),
-      date: new FormControl(),
+      name: new FormControl('',[Validators.required]),
+      description: new FormControl('',[Validators.required]),
+      date: new FormControl('',[Validators.required]),
     });
 
     if (this.router.url == '/create-meetup') {
@@ -73,7 +76,6 @@ export class MeetupDetailsComponent implements OnInit {
     } else {
       this.service.patch(this.formGroup.getRawValue()).subscribe();
     }
-
     this.formGroup.disable();
   }
 }

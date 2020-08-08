@@ -1,9 +1,41 @@
-<div [formGroup]="form">
-  <label>Name:</label>
-  <input type="text" formControlName="offerName" />
+<app-header></app-header>
+<main>
+  <h1>
+    Create Offer
+  </h1>
 
-  <label>Details:</label>
-  <input type="text" formControlName="offerDetails" />
-</div>
+  <div class="flex-row-space-around">
+    <section class="form-section">
+    <form [formGroup]="formGroup">
+      <div class="form-group">
+        <label>Name:</label>
+        <input type="text" placeholder="Offer Name" formControlName="offerName" />
 
-<app-submit-button (onClick)="clicked()" [formState]="isFormValid">Submit</app-submit-button>
+        <label>Description:</label>
+        <textarea class="offer-description" contenteditable="true"
+                placeholder="Enter a description for your offer" formControlName="offerDescription">
+        </textarea>
+
+        <label>Price:</label>
+        <input
+          type="number"
+          step="0.01"
+          min="5"
+          max="500"
+          formControlName="offerPrice"
+        />
+      </div>
+
+      <app-submit-button (onClick)="clicked()" [formState]="isFormValid">Submit</app-submit-button>
+    </form>
+    </section>
+
+    <section class="image-section">
+      <img src="../../../assets/images/offers.svg" alt="offer-image" />
+    </section>
+
+  </div>
+
+</main>
+
+<app-footer></app-footer>

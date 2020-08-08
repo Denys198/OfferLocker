@@ -35,20 +35,6 @@ h1 {
   flex-direction: column;
 }
 
-.photo-file {
-  width: 50px;
-}
-
-.photos-title {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.photos {
-  display: flex;
-  flex-direction: row;
-}
-
 .offer-description {
   width: 99%;
   min-height: 150px;
@@ -91,7 +77,7 @@ p {
 }
 
 button {
-  background-color: #27ae60;
+  background-color: #2783ae;
   border: 0;
   outline: 0;
   cursor: pointer;

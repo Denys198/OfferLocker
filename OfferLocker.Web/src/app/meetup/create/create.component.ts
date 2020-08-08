@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import {MeetupService } from '../services/meetup.service';
 
 @Component({
   selector: 'app-create',
@@ -8,7 +10,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class CreateComponent implements OnInit {
   public form: FormGroup;
-  constructor() {}
+  constructor(
+    private router: Router,
+    private service: MeetupService,
+  ) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -23,6 +28,8 @@ export class CreateComponent implements OnInit {
   }
 
   public clicked(): void {
+    this.service.post(this.form.getRawValue()).subscribe();
+    this.router.navigate(['meetup-list']);
     console.log(this.form.value);
   }
 }

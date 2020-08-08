@@ -6,6 +6,7 @@ import { CampusListComponent } from './campus-community/campus-list/campus-list.
 import { CampusDetailsComponent } from './campus-community/campus-details/campus-details.component';
 import { MeetupListComponent } from './meetup/meetup-list/meetup-list.component';
 import { MeetupDetailsComponent } from './meetup/meetup-details/meetup-details.component';
+import { CreateComponent } from './offer/create/create.component';
 
 const routes: Routes = [
   {
@@ -20,8 +21,6 @@ const routes: Routes = [
         (m) => m.AuthenticationModule
       ),
   },
-  { path: 'offer-list', component: OfferListComponent },
-  { path: 'create-offer', component: OfferDetailsComponent },
   { path: 'community-list', component: CampusListComponent },
   { path: 'community-details', component: CampusDetailsComponent },
   {
@@ -40,6 +39,12 @@ const routes: Routes = [
     path: 'offer',
     loadChildren: () =>
       import('./offer/offer.module').then((m) => m.OfferModule),
+  },
+  {
+    path: 'offer-list', component: OfferListComponent
+  },
+  {
+    path: 'create-offer', component: OfferDetailsComponent
   },
   {
     path: 'user',
