@@ -5,14 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OfferLocker.Persistence.Commons
+namespace OfferLocker.Persistence.Commons.Implementations
 {
     public interface IFollowRepository : IRepository<Follow>
     {
         Task<IList<Follow>> GetFollowersByFollowed(Guid followedId);
         Task<IList<Follow>> GetFollowingByFollower(Guid followerId);
         Task AddRange(IList<Follow> follows);
-
     }
 
     public class FollowRepository : Repository<Follow>, IFollowRepository

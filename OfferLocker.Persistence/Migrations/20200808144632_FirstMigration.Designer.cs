@@ -10,8 +10,8 @@ using OfferLocker.Persistence;
 namespace OfferLocker.Persistence.Migrations
 {
     [DbContext(typeof(OffersContext))]
-    [Migration("20200804132146_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20200808144632_FirstMigration")]
+    partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,28 @@ namespace OfferLocker.Persistence.Migrations
                 .HasAnnotation("ProductVersion", "3.1.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("OfferLocker.Entities.Category.Category", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
+
+                    b.ToTable("Categories");
+                });
 
             modelBuilder.Entity("OfferLocker.Entities.Commons.CampusCommunity", b =>
                 {
@@ -98,6 +120,67 @@ namespace OfferLocker.Persistence.Migrations
                     b.HasIndex("IdUserFollower");
 
                     b.ToTable("Follow");
+                });
+
+            modelBuilder.Entity("OfferLocker.Entities.Commons.Notification", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("OfferId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OfferId");
+
+                    b.ToTable("Notifications");
+                });
+
+            modelBuilder.Entity("OfferLocker.Entities.Commons.NotificationsToUsers", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("NotificationId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NotificationId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("NotificationToUsers");
+                });
+
+            modelBuilder.Entity("OfferLocker.Entities.Commons.SavedOffer", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("OfferId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OfferId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("SavedOffers");
                 });
 
             modelBuilder.Entity("OfferLocker.Entities.Commons.University", b =>
@@ -213,47 +296,28 @@ namespace OfferLocker.Persistence.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("Name")
-                        .IsUnique()
-                        .HasFilter("[Name] IS NOT NULL");
+                        .IsUnique();
 
                     b.ToTable("Meetups");
-                });
-
-            modelBuilder.Entity("OfferLocker.Entities.Offers.Category", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid?>("OfferId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OfferId");
-
-                    b.ToTable("Category");
                 });
 
             modelBuilder.Entity("OfferLocker.Entities.Offers.Offer", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CategoryId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Description")
@@ -337,13 +401,51 @@ namespace OfferLocker.Persistence.Migrations
                     b.HasOne("OfferLocker.Entities.Identity.User", "Followed")
                         .WithMany("Followers")
                         .HasForeignKey("IdUserFollowed")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("OfferLocker.Entities.Identity.User", "Follower")
                         .WithMany("Following")
                         .HasForeignKey("IdUserFollower")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("OfferLocker.Entities.Commons.Notification", b =>
+                {
+                    b.HasOne("OfferLocker.Entities.Offers.Offer", null)
+                        .WithMany("Notifications")
+                        .HasForeignKey("OfferId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("OfferLocker.Entities.Commons.NotificationsToUsers", b =>
+                {
+                    b.HasOne("OfferLocker.Entities.Commons.Notification", null)
+                        .WithMany("ToUsers")
+                        .HasForeignKey("NotificationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("OfferLocker.Entities.Identity.User", null)
+                        .WithMany("Notifications")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("OfferLocker.Entities.Commons.SavedOffer", b =>
+                {
+                    b.HasOne("OfferLocker.Entities.Offers.Offer", null)
+                        .WithMany("SavedOffers")
+                        .HasForeignKey("OfferId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("OfferLocker.Entities.Identity.User", null)
+                        .WithMany("SavedOffers")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -365,13 +467,6 @@ namespace OfferLocker.Persistence.Migrations
                         .WithMany("Users")
                         .HasForeignKey("UserTypeId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("OfferLocker.Entities.Offers.Category", b =>
-                {
-                    b.HasOne("OfferLocker.Entities.Offers.Offer", null)
-                        .WithMany("Categories")
-                        .HasForeignKey("OfferId");
                 });
 
             modelBuilder.Entity("OfferLocker.Entities.Offers.OfferComment", b =>

@@ -3,9 +3,10 @@ using System.Threading.Tasks;
 using LinqBuilder.Core;
 using Microsoft.EntityFrameworkCore;
 
+using OfferLocker.Persistence.Commons.Interfaces;
 using OfferLocker.Entities.Identity;
 
-namespace OfferLocker.Persistence.Commons
+namespace OfferLocker.Persistence.Commons.Implementations
 {
     public sealed class UserTypeRepository : Repository<UserType>, IUserTypeRepository
     {

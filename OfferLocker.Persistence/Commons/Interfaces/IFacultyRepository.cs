@@ -4,7 +4,7 @@ using LinqBuilder.Core;
 
 using OfferLocker.Entities.Commons;
 
-namespace OfferLocker.Persistence.Commons
+namespace OfferLocker.Persistence.Commons.Interfaces
 {
     public interface IFacultyRepository : IRepository<Faculty>
     {

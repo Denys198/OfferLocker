@@ -1,4 +1,4 @@
-﻿using OfferLocker.Persistence.Commons;
+﻿using OfferLocker.Persistence.Commons.Interfaces;
 using AutoMapper;
 using System;
 using System.Threading.Tasks;
