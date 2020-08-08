@@ -1,31 +1,58 @@
-@import "../../../assets/styles/layout.scss";
+main {
+  width: 80%;
+  margin: 0 auto;
+  padding: 5em;
+}
 
 h1 {
-  margin-left: 20px;
+  font-size: 30px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: #5680e9;
+  font-weight: 200;
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.048);
 }
 
 .flex-row-space-around {
-  margin: 20px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.image-section img {
+  width: 30vw;
 }
 
 .form-section {
-  width: 50%;
   padding: 50px;
+  width: 40vw;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  font-family: "Open Sans";
   background-color: white;
   border-radius: 8px;
   box-shadow: 0px 0px 8px rgba(0, 23, 87, 0.08);
 }
 
-.trip-description {
-  width: 99%;
-  min-height: 150px;
-  font-family: "Open Sans";
-  font-size: 16px;
-  font-weight: 200;
+.add-photos {
+  display: flex;
+  flex-direction: column;
+}
+
+.meetup-description {
+  width: 90%;
+  padding: 12px;
+  border: 1px solid #b5bac7;
+  background-color: whitesmoke;
+  border-radius: 8px;
+  outline: none;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
 }
 
 .form-group {
@@ -38,22 +65,14 @@ label {
   font-weight: 400;
 }
 
-input[type="text"] {
-  width: 100%;
-  display: block;
-  border: none;
-  padding: 6px 30px;
-  font-family: "Open Sans";
-  box-sizing: border-box;
-  text-align: center;
+input {
+  width: 70%;
+  height: 30px;
+  margin-bottom: 10px;
+  border: 1px solid #b5bac7;
+  background-color: whitesmoke;
+  border-radius: 8px;
   outline: none;
-  font-size: 20px;
-  font-weight: 600;
-  background-color: white;
-}
-
-input[type="text"]:focus {
-  border-bottom: 1px solid #999;
 }
 
 p {
@@ -62,7 +81,7 @@ p {
 }
 
 button {
-  background-color: #27ae60;
+  background-color: #2783ae;
   border: 0;
   outline: 0;
   cursor: pointer;
@@ -75,4 +94,14 @@ button {
 
 button span {
   color: white !important;
+}
+
+@media (max-width: 900px) {
+  .flex-column-space-around {
+    flex-direction: column;
+  }
+
+  img {
+    max-width: 100%;
+  }
 }

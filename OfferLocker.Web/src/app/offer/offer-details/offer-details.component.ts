@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SharedModule } from 'src/app/shared/shared.module';
 import { Subscription } from 'rxjs';
 
 import {OfferModel} from '../models';

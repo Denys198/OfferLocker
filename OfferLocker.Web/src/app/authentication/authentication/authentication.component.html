@@ -1,12 +1,16 @@
 <!-- Componenta header care e shared are si numele user-ului, aici o sa folosesc alta -->
+
 <header>
-  <a href="/dashboard">
+  <img id="header-logo" src="../../../assets/images/logo.svg" alt="logo" />
+  <a href="">
     <h1>OfferLocker</h1>
   </a>
 </header>
 
+
 <div class="authentication-container">
 
+<!--
   <div class="curved">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 319">
       <path fill="#5ac2ce" fill-opacity="1"
@@ -14,11 +18,12 @@
       </path>
     </svg>
   </div>
+  -->
 
   <img src='../../../assets/images/undraw_business_shop_qw5t.svg'>
 
   <div class="authentication-content">
-    <form class="authentication-content" [formGroup]="formGroup">
+    <form class="authentication-content-inside" [formGroup]="formGroup">
     <span class="login-label">{{isSetRegistered? 'Register': 'Log in'}} </span>
     <br>
     <label>Email</label>
@@ -49,3 +54,5 @@
   </form>
   </div>
 </div>
+
+<app-footer></app-footer>

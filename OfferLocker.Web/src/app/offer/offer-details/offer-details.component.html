@@ -6,7 +6,6 @@
   </h1>
 
   <div class="flex-row-space-around">
-
     <section class="form-section">
       <form [formGroup]="formGroup" id="formGroup">
       <div class="form-group">
@@ -26,25 +25,22 @@
 
       <div class="form-group">
         <label>Price:</label>
-        <p *ngIf="isFormDisabled; else notEditable2">{{ price }} RON</p>
+        <p *ngIf="isFormDisabled; else notEditable2"> RON</p>
         <ng-template #notEditable2>
-          <input type="number" step="0.01" min="5" max="500" formControlName="price" />{{
-            price
-          }}
+          <input type="number" step="0.01" min="5" max="500" formControlName="price" />  RON
         </ng-template>
       </div>
 
       <button type="button" *ngIf="isFormDisabled" (click)="save()"><span>Save deal</span></button>
-
-      <app-submit-button *ngIf="isFormDisabled; else saveButton" (onClick)="startUpdating()" [formState]="isFormValid">Update</app-submit-button>
-
+      <button
+        type="button"
+        *ngIf="isFormDisabled; else saveButton"
+        (click)="startUpdating()">
+        <span>Update</span>
+      </button>
       <ng-template #saveButton>
         <app-submit-button (onClick)="save()" [formState]="isFormValid">Submit</app-submit-button>
       </ng-template>
-      <ng-template #hideButton>
-
-      </ng-template>
-
       </form>
     </section>
 

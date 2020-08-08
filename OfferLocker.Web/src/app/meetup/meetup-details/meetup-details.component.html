@@ -1,12 +1,13 @@
 <app-header></app-header>
 
+<main>
 <h1>
   Meetup Details
 </h1>
 
 <div class="flex-row-space-around">
   <section class="form-section">
-    <form [formGroup]="formGroup">
+    <form [formGroup]="formGroup" id="formGroup">
       <div class="form-group">
         <label>Name:</label>
         <input
@@ -35,9 +36,7 @@
         <label>Date:</label>
         <p *ngIf="isFormDisabled; else notEditable2">{{ date }}</p>
         <ng-template #notEditable2>
-          <input type="date" formControlName="date" />{{
-            date
-          }}
+          <input type="date" formControlName="date" />
         </ng-template>
       </div>
 
@@ -52,6 +51,10 @@
       </ng-template>
     </form>
   </section>
-</div>
 
+  <section class="image-section">
+    <img src="../../../assets/images/meetup.svg" alt="meetup-image" />
+  </section>
+</div>
+</main>
 <app-footer></app-footer>
