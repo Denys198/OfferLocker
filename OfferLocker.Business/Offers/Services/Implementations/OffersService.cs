@@ -45,6 +45,12 @@ namespace OfferLocker.Business.Offers.Services.Implementations
 				_mapper.Map<IList<OfferModel>>(entities));
 		}
 
+		public async Task<IList<OfferModel>> GetByCategory(Guid categoryId)
+		{
+			var entities = await _repository.GetByCategory(categoryId);
+			return _mapper.Map<IList<OfferModel>>(entities);
+		}
+
 		public async Task<OfferModel> GetById(Guid id)
 		{
 			var entity = await _repository.GetById(id);

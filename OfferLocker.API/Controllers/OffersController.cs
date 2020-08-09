@@ -27,6 +27,14 @@ namespace OfferLocker.API.Controllers
             return Ok(result);
         }
 
+        [HttpGet("/categories/{categoryId}")]
+        public async Task<IActionResult> SearchByCategory([FromRoute] Guid categoryId)
+        {
+            var result = await _offersService.GetByCategory(categoryId);
+
+            return Ok(result);
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> Get([FromRoute] Guid id)
         {

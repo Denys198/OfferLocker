@@ -1,0 +1,9 @@
+<div [formGroup]="form">
+  <label>Name:</label>
+  <input type="text" formControlName="communityName" />
+
+  <label>Details:</label>
+  <input type="text" formControlName="communityDetails" />
+</div>
+
+<app-submit-button (onClick)="clicked()" [formState]="isFormValid">Submit</app-submit-button>

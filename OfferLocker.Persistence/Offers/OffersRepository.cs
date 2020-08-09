@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using OfferLocker.Entities;
 using OfferLocker.Entities.Commons;
 using OfferLocker.Entities.Identity;
+using OfferLocker.Entities.Category;
 using OfferLocker.Entities.Offers;
 using System;
 using System.Collections.Generic;
@@ -43,5 +44,7 @@ namespace OfferLocker.Persistence.Offers
             SendNotificationModule.SendNotification(context, entity, SendNotificationModule.Action.Delete);
             base.Delete(entity);
         }
+        public async Task<IList<Offer>> GetByCategory(Guid categoryId)
+            => await context.Offers.Where(x => x.CategoryId == categoryId).ToListAsync();
     }
 }
