@@ -19,7 +19,7 @@ export class OfferListComponent implements OnInit {
     private service: OfferService
     ) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.service.getAll().subscribe((data: OffersModel) => {
       this.offerList = data.results;
     });
@@ -27,7 +27,7 @@ export class OfferListComponent implements OnInit {
 
   goToOffer(id: string): void {
     console.log(id);
-    this.router.navigate(['/offer/details/${id}']);
+    this.router.navigate([`/offers/${id}`]);
   }
 
 }

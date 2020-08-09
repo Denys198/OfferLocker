@@ -1,11 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SharedModule } from 'src/app/shared/shared.module';
 import { Subscription } from 'rxjs';
 
-import {OfferModel} from '../models';
-import {OfferService } from '../services/offer.service';
+import { OfferModel } from '../models';
+import { OfferService } from '../services/offer.service';
 
 @Component({
   selector: 'app-offer-details',
@@ -13,19 +12,22 @@ import {OfferService } from '../services/offer.service';
   styleUrls: ['./offer-details.component.css'],
   providers: [FormBuilder]
 })
-export class OfferDetailsComponent implements OnInit, OnDestroy {
-  fileToUpload: any;
-  imageUrl: any;
-
+export class OfferDetailsComponent implements OnInit {
   formGroup: FormGroup;
-  isAdmin: boolean;
   isAddMode: boolean;
-  photos: Blob[] = [];
 
   private routeSub: Subscription = new Subscription();
 
   get description(): string {
     return this.formGroup.get('description').value;
+  }
+
+  get price(): number {
+    return this.formGroup.get("price").value;
+  }
+
+  public get isFormValid(): boolean {
+    return this.formGroup.valid;
   }
 
   get isFormDisabled(): boolean {
@@ -41,18 +43,15 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
       id: new FormControl(),
-      title: new FormControl(),
-      description: new FormControl(),
-      available: new FormControl(false),
-      price: new FormControl(),
+      name: new FormControl('', [Validators.required]),
+      description: new FormControl('', [Validators.required]),
+      price: new FormControl('', [Validators.required]),
     });
 
-    if (this.router.url === '/create-offer') {
+    if (this.router.url === '/offer/create') {
       this.isAddMode = true;
     } else {
-      //Getting id from url
-      this.routeSub = this.activatedRoute.params.subscribe(params => {
-        //Getting details for the trip with the id found
+      this.routeSub = this.activatedRoute.params.subscribe((params) => {
         this.service.get(params['id']).subscribe((data: OfferModel) => {
           this.formGroup.patchValue(data);
         })
@@ -60,7 +59,6 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
       });
       this.isAddMode = false;
     }
-    this.isAdmin = true;
   }
 
   ngOnDestroy(): void {
@@ -74,24 +72,10 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
   save() {
     if (this.isAddMode) {
       this.service.post(this.formGroup.getRawValue()).subscribe();
-      this.router.navigate(['offer-list']);
+      this.router.navigate(['offer/list']);
     } else {
       this.service.patch(this.formGroup.getRawValue()).subscribe();
     }
-
-    this.photos.push(this.imageUrl);
-    this.imageUrl = null;
     this.formGroup.disable();
   }
-
-  handleFileInput(file: FileList) {
-    this.fileToUpload = file.item(0);
-
-    let reader = new FileReader();
-    reader.onload = (event: any) => {
-      this.imageUrl = event.target.result;
-    }
-    reader.readAsDataURL(this.fileToUpload);
-  }
-
 }

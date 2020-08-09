@@ -1,13 +1,19 @@
 
 header {
   width: 100%;
-  background-color:#5ac2ce;
-  text-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+  background-color:#5ab9ea;
+  text-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+}
+
+#logo {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
 }
 
 #header-wrapper {
-  min-height: 8vh;
-  width: 80%;
+  min-height: 10vh;
+  width: 90%;
   margin: 0 auto;
   display: flex;
   flex-flow: row nowrap;
@@ -15,18 +21,26 @@ header {
   align-items: center;
 }
 
-#project-title {
-  letter-spacing: 2px;
-  margin: 0px;
-  font-size: 28px;
-  font-weight: 400;
-  color:whitesmoke;
+#header-logo {
+  width: 3em;
+  height: 3em;
 }
 
-ul {
+#project-title {
+  padding: 0.1em;
+  margin: 5px;
+  font-size: 38px;
+  font-weight: 200;
+  letter-spacing: 2px;
+  color:white;
+  text-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+}
+
+#links {
   display: flex;
   justify-content: space-between;
-  width: 50%;
+  align-items: center;
+  width: 30%;
   list-style-type: none;
   font-size: 21px;
   letter-spacing: 1px;
@@ -40,5 +54,23 @@ li {
 
 a:link, a:visited {
   text-decoration: none;
-  color:whitesmoke;
+  color:white;
+}
+#dropdown a:visited,#dropdown a:link {
+  color: rgba(0,0,0,0.8);
+  font-size: 18px;
+  cursor: pointer;
+}
+a:hover {
+  text-decoration: none;
+}
+
+#dropdown {
+  border-radius: 0;
+  line-height: 1.7em;
+}
+
+svg {
+  position: relative;
+  bottom: 0.09em;
 }

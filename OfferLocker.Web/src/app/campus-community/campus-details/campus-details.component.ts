@@ -3,8 +3,8 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
-import {CampusCommunityModel} from '../models';
-import {CampusCommunityService} from '../services/campusCommunity.service';
+import { CampusCommunityModel } from '../models';
+import { CampusCommunityService } from '../services/campusCommunity.service';
 
 @Component({
   selector: 'app-campus-details',
@@ -45,20 +45,20 @@ export class CampusDetailsComponent implements OnInit, OnDestroy {
       id: new FormControl(),
       title: new FormControl(),
       description: new FormControl(),
-  });
-  if (this.router.url === '/create-community') {
-    this.isAddMode = true;
-  } else {
-    //Getting id from url
-    this.routeSub = this.activatedRoute.params.subscribe(params => {
-      //Getting details for the trip with the id found
-      this.service.get(params['id']).subscribe((data: CampusCommunityModel) => {
-        this.formGroup.patchValue(data);
-      })
-      this.formGroup.disable();
     });
-    this.isAddMode = false;
-  }
+    if (this.router.url === 'communities/create') {
+      this.isAddMode = true;
+    } else {
+      //Getting id from url
+      this.routeSub = this.activatedRoute.params.subscribe(params => {
+        //Getting details for the trip with the id found
+        this.service.get(params['id']).subscribe((data: CampusCommunityModel) => {
+          this.formGroup.patchValue(data);
+        })
+        this.formGroup.disable();
+      });
+      this.isAddMode = false;
+    }
 
   }
   ngOnDestroy(): void {
@@ -72,7 +72,7 @@ export class CampusDetailsComponent implements OnInit, OnDestroy {
   save() {
     if (this.isAddMode) {
       this.service.post(this.formGroup.getRawValue()).subscribe();
-      this.router.navigate(['community']);
+      this.router.navigate(['communities']);
     } else {
       this.service.patch(this.formGroup.getRawValue()).subscribe();
     }

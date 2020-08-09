@@ -2,70 +2,50 @@
 
 <main>
   <h1>
-    Create Offer
+    Offer Details
   </h1>
 
   <div class="flex-row-space-around">
-
     <section class="form-section">
-      <form [formGroup]="formGroup">
+      <form [formGroup]="formGroup" id="formGroup">
       <div class="form-group">
-        <h2>Offer Name:</h2>
-        <input type="text" placeholder="Enter offer name" formControlName="title">
-        <h2>Price:</h2>
-        <input type="text" placeholder="Enter offer price" formControlName="price">
-        <h2>Available:</h2>
-        <input type="text" placeholder="Enter offer status" formControlName="available">
+        <label>Name:</label>
+        <input type="text" placeholder="Enter offer name" formControlName="name" >
       </div>
 
       <div class="form-group">
-        <p *ngIf="isFormDisabled; else notEditable">{{description}}</p>
+        <label>Description:</label>
+        <p *ngIf="isFormDisabled; else notEditable1">{{description}}</p>
 
-        <ng-template #notEditable>
+        <ng-template #notEditable1>
           <textarea class="offer-description" contenteditable="true"
-            placeholder="Enter offer description" formControlName="description">{{description}}</textarea>
+            placeholder="Enter a description for your offer" formControlName="description">{{description}}</textarea>
         </ng-template>
       </div>
 
-      <div class="photos">
-        <label class="photos-title">Photos</label>
-
-        <div class="photos-list">
-          <div *ngIf="photos.length > 0; else noPhotos">
-
-          </div>
-          <ng-template #noPhotos>
-            <label *ngIf="photos.length === 0">No photos available</label>
-          </ng-template>
-
-          <div class="add-photos" *ngIf="!isFormDisabled">
-            <div class="photo-file-container">
-
-              <img class="photo-file" *ngFor="let photo of photos" [src]="photo">
-            </div>
-
-            <input #Image type="file" (change)="handleFileInput($event.target.files)" />
-            <img class="photo-file" [src]="imageUrl">
-          </div>
-
-          <div class="added-photos" *ngIf="isFormDisabled">
-            <img class="photo-file" *ngFor="let photo of photos" [src]="photo">
-          </div>
-        </div>
+      <div class="form-group">
+        <label>Price:</label>
+        <p *ngIf="isFormDisabled; else notEditable2"> RON</p>
+        <ng-template #notEditable2>
+          <input type="number" step="0.01" min="5" max="500" formControlName="price" />  RON
+        </ng-template>
       </div>
 
-      <button type="button" *ngIf="isFormDisabled; else saveButton" (click)="startUpdating()"><span> Update
-          offer</span></button>
-      <button type="button" *ngIf="isFormDisabled; else saveButton" (click)="startUpdating()"><span> Buy now</span></button>
-      <button type="button" *ngIf="isFormDisabled; else saveButton" (click)="save()"><span> Save deal</span></button>
+      <button type="button" *ngIf="isFormDisabled" (click)="save()"><span>Save deal</span></button>
+      <button
+        type="button"
+        *ngIf="isFormDisabled; else saveButton"
+        (click)="startUpdating()">
+        <span>Update</span>
+      </button>
       <ng-template #saveButton>
-        <button type="button" (click)="save()"><span>Save offer</span></button>
+        <app-submit-button (onClick)="save()" [formState]="isFormValid">Submit</app-submit-button>
       </ng-template>
       </form>
     </section>
 
     <section class="image-section">
-      <img src="../../../assets/images/undraw_gifts_btw0.png" alt="Offer image" />
+      <img src="../../../assets/images/offers.svg" alt="offer-image" />
     </section>
   </div>
 </main>

@@ -52,7 +52,7 @@ export class AuthenticationComponent {
 
       this.authenticationService.register(data).subscribe(() => {
         this.userService.username.next(data.email);
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['user']);
       });
     } else {
       const data: RegisterModel = this.formGroup.getRawValue();
@@ -61,7 +61,7 @@ export class AuthenticationComponent {
       this.authenticationService.login(data).subscribe((logData: any) => {
         localStorage.setItem('userToken', JSON.stringify(logData.token));
         this.userService.username.next(data.email);
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['user']);
       });
     }
   }

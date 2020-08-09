@@ -1,11 +1,26 @@
 <header>
   <div id="header-wrapper">
-    <h2 id="project-title"><a href="/dashboard">{{ projectTitle }}</a>
-    </h2>
-    <ul>
-      <li><a href="/create-offer">Create offer</a></li>
-      <li><a href="/notifications">Notifications</a></li>
-      <li><a href="/user">My profile</a></li>
-    </ul>
+
+    <div id="logo">
+      <img id="header-logo" src="../../../assets/images/logo.svg" alt="logo" />
+      <h2 id="project-title"><a href="user">{{ projectTitle }}</a></h2>
+    </div>
+
+    <div id="links">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+        aria-expanded="false">Categories</a>
+      <div id="dropdown" class="dropdown-menu">
+        <a class="dropdown-item" href="/categories">All categories</a>
+        <a class="dropdown-item" href="categories/{{category.link}}" *ngFor="let category of categories"
+          (click)="goToCategory(category.link)">{{category.name}}</a>
+      </div>
+
+      <a class="nav-item" href="/user">My profile
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+        </svg>
+      </a>
+    </div>
   </div>
 </header>

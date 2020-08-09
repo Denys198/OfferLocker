@@ -1,6 +1,6 @@
-export type OfferModel= {
-  id?:string;
-  title: string;
-  description:string;
-  isAvailable?:boolean;
-}
+export type OfferModel = {
+  id?: string;
+  name: string;
+  description: string;
+  price: number;
+};

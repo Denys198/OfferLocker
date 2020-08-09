@@ -1,11 +1,12 @@
 button {
-  font-size: 16px;
-  padding: 5px 10px;
-  background-color: #5ac2ce;
-  border: none;
-  border-radius: 5px;
-  /* color: rgba(0, 0, 0, 0.700); */
-  color: white;
-  text-shadow: 2px 1px 1px rgba(0,0,0,0.3);
-  letter-spacing: 1px;
+  background-color: #5680e9;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  width: 20%;
+  height: 40px;
+  border-radius: 8px;
+  font-family: "Open Sans";
+  font-weight: bold;
+  color:whitesmoke;
 }

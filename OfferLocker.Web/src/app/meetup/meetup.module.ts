@@ -1,19 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MeetupRoutingModule } from './meetup-routing.module';
-import { MeetupComponent } from './meetup/meetup.component';
-import { RouterModule } from '@angular/router';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { CreateComponent } from './create/create.component';
+import { MeetupDetailsComponent } from './meetup-details/meetup-details.component';
+import { MeetupListComponent } from './meetup-list/meetup-list.component';
+import { SharedModule } from '../shared/shared.module';
+
 
 @NgModule({
-  declarations: [MeetupComponent],
+  declarations: [CreateComponent, MeetupDetailsComponent, MeetupListComponent],
   imports: [
     CommonModule,
     MeetupRoutingModule,
-    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
     SharedModule
   ],
-  exports: [MeetupComponent]
+  exports: [MeetupDetailsComponent, MeetupListComponent]
 })
 export class MeetupModule { }

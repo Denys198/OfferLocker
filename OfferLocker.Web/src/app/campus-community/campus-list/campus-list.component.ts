@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
-import {CampusCommunityModel, CampusCommunitiesModel} from '../models';
-import {CampusCommunityService} from '../services/campusCommunity.service';
+import { CampusCommunityModel, CampusCommunitiesModel } from '../models';
+import { CampusCommunityService } from '../services/campusCommunity.service';
 
 @Component({
   selector: 'app-campus-list',
@@ -16,17 +16,17 @@ export class CampusListComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private service:CampusCommunityService
+    private service: CampusCommunityService
   ) { }
 
   ngOnInit(): void {
-    this.service.getAll().subscribe((data : CampusCommunitiesModel) => {
+    this.service.getAll().subscribe((data: CampusCommunitiesModel) => {
       this.communityList = data.results;
-  });
+    });
   }
 
-  goToCommunity(id: string): void{
+  goToCommunity(id: string): void {
     console.log(id);
-    this.router.navigate(['/community/details/${id}']);
+    this.router.navigate(['/communities/${id}']);
   }
 }
