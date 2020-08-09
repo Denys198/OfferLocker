@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Presentation", "1. Presentation", "{671AD815-8B8F-4341-9033-95DE8B085662}"
+	ProjectSection(SolutionItems) = preProject
+		OfferLocker.API\Extensions\SwaggerExtensions.cs = OfferLocker.API\Extensions\SwaggerExtensions.cs
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Business", "2. Business", "{7CFF3A0B-071D-42AE-80DE-23F1D6E6AAC9}"
 EndProject

@@ -2,22 +2,21 @@
 
 <main>
   <section id="category">
-    <h1>Category: </h1>
+    <h1>Category: {{category.name}}</h1>
 
     <div id="category-info">
       <div id="category-details">
-        <p id="category-descr"></p>
+        <p id="category-descr">{{ category.description }}</p>
         <div class="line">
         </div>
       </div>
-      <img src="" alt="Category picture">
+      <img src="{{getImage(category.name)}}" alt="Category picture">
     </div>
   </section>
 
   <h2>Offers in this category </h2>
   <div class="cards">
-    <tile *ngFor="let offer of offerList" tileName="" background="../../assets/images/undraw_gifts_btw0.png"
-      (click)="goToOffer(offer.id)"></tile>
+    <tile *ngFor="let offer of offerList" tileName="{{offer.name}}" imageLink="" (click)="goToOffer(offer.id)"></tile>
   </div>
 </main>
 

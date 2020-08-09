@@ -5,12 +5,7 @@
 
   <div class="notifications-container">
     <ul>
-      <li>Notification 1</li>
-      <li>Notification 2</li>
-      <li>Notification 1</li>
-      <li>Notification 2</li>
-      <li>Notification 1</li>
-      <li>Notification 2</li>
+      <li *ngFor="let notification of notificationList">{{notification.text}}</li>
     </ul>
     <img src="../../../assets/images/undraw_popular_7nrh.png">
   </div>

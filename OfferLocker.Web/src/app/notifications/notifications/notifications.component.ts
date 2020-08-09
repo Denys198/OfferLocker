@@ -9,6 +9,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 })
 export class NotificationsComponent implements OnInit {
 
+  public notificationList = []; //din serviciu
   constructor() { }
 
   ngOnInit(): void {

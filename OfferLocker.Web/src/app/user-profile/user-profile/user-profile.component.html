@@ -14,20 +14,12 @@
     </div>
   </section>
 
-  <!-- <section id="offers-section">
+  <section id="offers-section">
     <h2>Active offers</h2>
-
-    <div id="offers">
-      <tile></tile>
-      <tile></tile>
-      <tile></tile>
-      <tile></tile>
+    <div id=offers class="offers-section">
+      <tile *ngFor="let offer of offerList" imageLink="" tileName="{{offer.name}}" (click)="goToOffer(offer.id)"></tile>
     </div>
-  </section> -->
-  <div id=offers class="offers-section">
-    <tile *ngFor="let offer of offerList" imageLink="" tileName="{{offer.name}}" (click)="goToOffer(offer.id)"></tile>
-
-  </div>
+  </section>
 
   <section id="reviews">
     <h2>User reviews</h2>

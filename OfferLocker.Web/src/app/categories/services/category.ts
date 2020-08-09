@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { CategoriesModel } from '../models/categories';
+import { CategoriesModel } from '../models/categories.model';
 import { CategoryModel } from '../models/category';
 
 @Injectable({
@@ -35,5 +35,8 @@ export class CategoryService {
 
   patch(category: CategoryModel): Observable<any> {
     return this.http.patch<any>('${this.endpoint}/${category.id}', category, this.httpOptions);
+  }
+  getOffers(id: string): Observable<CategoryModel> {
+    return this.http.get<CategoryModel>('${this.endpoint}/${id}', this.httpOptions);
   }
 }
