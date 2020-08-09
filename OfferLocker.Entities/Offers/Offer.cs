@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OfferLocker.Entities.Commons;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -27,6 +28,8 @@ namespace OfferLocker.Entities.Offers
 		public ICollection<Photo> Photos { get; private set; }
 
 		public ICollection<OfferComment> Comments { get; private set; }
+		public ICollection<Notification> Notifications { get; private set; }
+		public ICollection<SavedOffer> SavedOffers { get; private set; }
 
 		public void AddComment(OfferComment comment)
 		{

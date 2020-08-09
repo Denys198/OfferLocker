@@ -4,7 +4,7 @@ using LinqBuilder.Core;
 
 using OfferLocker.Entities.Identity;
 
-namespace OfferLocker.Persistence.Commons
+namespace OfferLocker.Persistence.Commons.Interfaces
 {
     public interface IUserTypeRepository : IRepository<UserType>
     {

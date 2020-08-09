@@ -1,5 +1,9 @@
 ﻿using LinqBuilder.Core;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
+using OfferLocker.Entities;
+using OfferLocker.Entities.Commons;
+using OfferLocker.Entities.Identity;
 using OfferLocker.Entities.Category;
 using OfferLocker.Entities.Offers;
 using System;
@@ -30,6 +34,16 @@ namespace OfferLocker.Persistence.Offers
                 .Include(offer => offer.Comments)
                 .FirstAsync(offer => offer.Id == id);
 
+        public new void Update(Offer entity)
+        {
+            SendNotificationModule.SendNotification(context, entity, SendNotificationModule.Action.Update);
+            base.Update(entity);
+        }
+        public new void Delete(Offer entity)
+        {
+            SendNotificationModule.SendNotification(context, entity, SendNotificationModule.Action.Delete);
+            base.Delete(entity);
+        }
         public async Task<IList<Offer>> GetByCategory(Guid categoryId)
             => await context.Offers.Where(x => x.CategoryId == categoryId).ToListAsync();
     }

@@ -26,5 +26,7 @@ namespace OfferLocker.Entities.Identity
 
         public virtual IList<Follow> Followers { get; set; }
         public virtual IList<Follow> Following { get; set; }
+        public ICollection<NotificationsToUsers> Notifications { get; private set; }
+        public ICollection<SavedOffer> SavedOffers { get; set; }
     }
 }

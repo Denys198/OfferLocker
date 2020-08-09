@@ -2,8 +2,10 @@
 using OfferLocker.Business.Offers.Models.CampusCommunity;
 using OfferLocker.Business.Offers.Models.Comment;
 using OfferLocker.Business.Offers.Models.Faculty;
+using OfferLocker.Business.Offers.Models.Notification;
 using OfferLocker.Business.Offers.Models.Offer;
 using OfferLocker.Business.Offers.Models.Photo;
+using OfferLocker.Business.Offers.Models.SavedOffer;
 using OfferLocker.Business.Offers.Models.Student;
 using OfferLocker.Business.Offers.Models.University;
 using OfferLocker.Business.Offers.Models.UserType;
@@ -31,6 +33,8 @@ namespace OfferLocker.Business.Offers
 			CreateMap<Student, StudentModel>();
 			CreateMap<CampusCommunity, CampusCommunityModel>();
 			CreateMap<UserType, UserTypeModel>();
+			CreateMap<Notification, NotificationModel>();
+			CreateMap<SavedOffer, SavedOfferModel>();
 		}
 	}
 }
