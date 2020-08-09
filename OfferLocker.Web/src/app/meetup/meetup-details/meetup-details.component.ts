@@ -38,17 +38,17 @@ export class MeetupDetailsComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private service: MeetupService) {}
+    private service: MeetupService) { }
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
       id: new FormControl(),
-      name: new FormControl('',[Validators.required]),
-      description: new FormControl('',[Validators.required]),
-      date: new FormControl('',[Validators.required]),
+      name: new FormControl('', [Validators.required]),
+      description: new FormControl('', [Validators.required]),
+      date: new FormControl('', [Validators.required]),
     });
 
-    if (this.router.url == '/create-meetup') {
+    if (this.router.url == 'meetups/create') {
       this.isAddMode = true;
     } else {
       this.routeSub = this.activatedRoute.params.subscribe((params) => {
@@ -65,12 +65,12 @@ export class MeetupDetailsComponent implements OnInit {
     this.routeSub.unsubscribe();
   }
 
-  startUpdating(){
+  startUpdating() {
     this.formGroup.enable();
   }
 
-  save(){
-    if (this.isAddMode){
+  save() {
+    if (this.isAddMode) {
       this.service.post(this.formGroup.getRawValue()).subscribe();
       this.router.navigate(['meetup-list']);
     } else {

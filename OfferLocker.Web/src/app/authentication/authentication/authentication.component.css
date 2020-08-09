@@ -26,9 +26,7 @@ header {
   width: 3em;
   height: 3em;
 }
-body {
-  background-color: #c1c8e4;
-}
+
 .curved {
   position: absolute;
   display: block;

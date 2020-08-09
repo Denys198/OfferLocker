@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { categories } from 'src/app/categories/categories-data';
 
 @Component({
   selector: 'app-header',
@@ -9,12 +10,19 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   public projectTitle: string = "OfferLocker";
+  public categories;
   constructor(
     public readonly userService: UserService,
     private readonly router: Router
   ) { }
 
   ngOnInit() {
+    this.categories = categories;
+  }
+
+  goToCategory(name: string): void {
+    console.log(name);
+    this.router.navigate([`/categories/${name}`]);
   }
 
   logout(): void {

@@ -23,6 +23,6 @@ export class MeetupListComponent implements OnInit {
 
   goToMeetup(id: string): void {
     console.log(id);
-    this.router.navigate([`/meetup/details/${id}`]);
+    this.router.navigate([`/meetups/${id}`]);
   }
 }

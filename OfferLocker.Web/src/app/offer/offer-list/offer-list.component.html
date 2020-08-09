@@ -7,8 +7,8 @@
     </h1>
 
     <div class="cards">
-      <tile *ngFor="let offer of offerList" label="{{offer.name}}" background="../../assets/images/undraw_gifts_btw0.png"
-        (click)="goToOffer(offer.id)"></tile>
+      <tile *ngFor="let offer of offerList" tileName="{{offer.name}}"
+        imageLink="../../assets/images/undraw_gifts_btw0.png" (click)="goToOffer(offer.id)"></tile>
 
     </div>
   </div>

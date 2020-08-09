@@ -3,8 +3,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
-import {OfferModel} from '../models';
-import {OfferService } from '../services/offer.service';
+import { OfferModel } from '../models';
+import { OfferService } from '../services/offer.service';
 
 @Component({
   selector: 'app-offer-details',
@@ -43,12 +43,12 @@ export class OfferDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
       id: new FormControl(),
-      name: new FormControl('',[Validators.required]),
-      description: new FormControl('',[Validators.required]),
-      price: new FormControl('',[Validators.required]),
+      name: new FormControl('', [Validators.required]),
+      description: new FormControl('', [Validators.required]),
+      price: new FormControl('', [Validators.required]),
     });
 
-    if (this.router.url === '/create-offer') {
+    if (this.router.url === '/offer/create') {
       this.isAddMode = true;
     } else {
       this.routeSub = this.activatedRoute.params.subscribe((params) => {
@@ -72,7 +72,7 @@ export class OfferDetailsComponent implements OnInit {
   save() {
     if (this.isAddMode) {
       this.service.post(this.formGroup.getRawValue()).subscribe();
-      this.router.navigate(['offer-list']);
+      this.router.navigate(['offer/list']);
     } else {
       this.service.patch(this.formGroup.getRawValue()).subscribe();
     }

@@ -3,17 +3,23 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { MeetupListComponent } from './meetup-list/meetup-list.component';
 import { MeetupDetailsComponent } from './meetup-details/meetup-details.component';
+import { CreateComponent } from './create/create.component';
 
 const routes: Routes = [
   {
-    path: 'meetup-list',
+    path: '', // va fi /meetups 
     pathMatch: 'full',
     component: MeetupListComponent,
   },
   {
-    path: 'details/:id',
+    path: '/:id', // meetups/id
     pathMatch: 'full',
     component: MeetupDetailsComponent,
+  },
+  {
+    path: 'create', // meetups/create
+    pathMatch: 'full',
+    component: CreateComponent,
   },
 ];
 

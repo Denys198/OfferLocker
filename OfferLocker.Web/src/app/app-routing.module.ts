@@ -21,8 +21,13 @@ const routes: Routes = [
         (m) => m.AuthenticationModule
       ),
   },
-  { path: 'community-list', component: CampusListComponent },
-  { path: 'community-details', component: CampusDetailsComponent },
+  {
+    path: 'communities',
+    loadChildren: () =>
+      import('./campus-community/campus-community.module').then(
+        (m) => m.CampusCommunityModule
+      ),
+  },
   {
     path: 'notifications',
     loadChildren: () =>
@@ -36,15 +41,9 @@ const routes: Routes = [
       import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
   {
-    path: 'offer',
+    path: 'offers',
     loadChildren: () =>
       import('./offer/offer.module').then((m) => m.OfferModule),
-  },
-  {
-    path: 'offer-list', component: OfferListComponent
-  },
-  {
-    path: 'create-offer', component: OfferDetailsComponent
   },
   {
     path: 'user',
@@ -54,24 +53,13 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'community',
-    loadChildren: () =>
-      import('./campus-community/campus-community.module').then(
-        (m) => m.CampusCommunityModule
-      ),
-  },
-  {
-    path: 'meetup',
+    path: 'meetups',
     loadChildren: () =>
       import('./meetup/meetup.module').then((m) => m.MeetupModule),
   },
   {
-    path: 'meetup-list',
-    component: MeetupListComponent,
-  },
-  {
-    path: 'create-meetup',
-    component: MeetupDetailsComponent
+    path: 'categories',
+    loadChildren: () => import('./categories/categories.module').then((m) => m.CategoriesModule),
   }
 ];
 
@@ -79,4 +67,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

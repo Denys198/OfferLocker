@@ -7,14 +7,19 @@ import { SharedModule } from 'src/app/shared/shared.module';
 
 const routes: Routes = [
   {
-    path: 'offer-list',
+    path: '', // /offers
     pathMatch: 'full',
     component: OfferListComponent,
   },
   {
-    path: 'details/:id',
+    path: ':id', // offers/id
     pathMatch: 'full',
     component: OfferDetailsComponent,
+  },
+  {
+    path: 'create', // offers/create
+    pathMatch: 'full',
+    component: CreateComponent,
   },
 ];
 
