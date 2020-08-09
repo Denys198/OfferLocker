@@ -55,6 +55,12 @@ namespace OfferLocker.Business.Meetups.Services.Implementations
 			return meetup;
 		}
 
+		public async Task<IList<MeetupModel>> GetByUser(Guid userId)
+		{
+			var entities = await _repository.GetByUser(userId);
+			return _mapper.Map<IList<MeetupModel>>(entities);
+		}
+
 		public async Task Update(Guid id, UpsertMeetupModel model)
 		{
 			var meetup = await _repository.GetById(id);

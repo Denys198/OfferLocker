@@ -7,12 +7,13 @@ namespace OfferLocker.Entities.Offers
 {
 	public sealed class Offer : Entity
 	{
-		public Offer(string name, string description, float price, Guid categoryId) : base()
+		public Offer(string name, string description, float price, Guid categoryId, Guid userId) : base()
 		{
 			Name = name;
 			Description = description;
 			Price = price;
 			CategoryId = categoryId;
+			UserId = userId;
 			Photos = new List<Photo>();
 			Comments = new List<OfferComment>();
 		}
@@ -24,6 +25,8 @@ namespace OfferLocker.Entities.Offers
 		public float Price { get; set; }
 
 		public Guid CategoryId { get; set; }
+
+		public Guid UserId { get; set; }
 
 		public ICollection<Photo> Photos { get; private set; }
 

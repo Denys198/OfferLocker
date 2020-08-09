@@ -10,8 +10,8 @@ using OfferLocker.Persistence;
 namespace OfferLocker.Persistence.Migrations
 {
     [DbContext(typeof(OffersContext))]
-    [Migration("20200808144632_FirstMigration")]
-    partial class FirstMigration
+    [Migration("20200809155452_NewMigration1")]
+    partial class NewMigration1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -328,6 +328,9 @@ namespace OfferLocker.Persistence.Migrations
 
                     b.Property<float>("Price")
                         .HasColumnType("real");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 

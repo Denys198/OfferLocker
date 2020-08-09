@@ -46,5 +46,8 @@ namespace OfferLocker.Persistence.Offers
         }
         public async Task<IList<Offer>> GetByCategory(Guid categoryId)
             => await context.Offers.Where(x => x.CategoryId == categoryId).ToListAsync();
+
+        public async Task<IList<Offer>> GetByUser(Guid userId)
+            => await context.Offers.Where(x => x.UserId == userId).ToListAsync();
     }
 }
