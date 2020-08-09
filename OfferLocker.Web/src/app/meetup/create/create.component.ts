@@ -28,8 +28,6 @@ export class CreateComponent implements OnInit {
   }
 
   public clicked(): void {
-    this.service.post(this.form.getRawValue()).subscribe();
-    this.router.navigate(['meetup-list']);
     console.log(this.form.value);
   }
 }

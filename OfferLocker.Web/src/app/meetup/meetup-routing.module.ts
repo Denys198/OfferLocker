@@ -7,7 +7,7 @@ import { CreateComponent } from './create/create.component';
 
 const routes: Routes = [
   {
-    path: '', // va fi /meetups 
+    path: '', // va fi /meetups
     pathMatch: 'full',
     component: MeetupListComponent,
   },
@@ -19,7 +19,7 @@ const routes: Routes = [
   {
     path: 'create', // meetups/create
     pathMatch: 'full',
-    component: CreateComponent,
+    component: MeetupDetailsComponent,
   },
 ];
 
