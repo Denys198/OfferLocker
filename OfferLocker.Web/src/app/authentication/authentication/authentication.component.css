@@ -23,8 +23,8 @@ header {
   opacity: 1;
   padding: 1em;
   float: left;
-  width: 3em;
-  height: 3em;
+  width: 5em;
+  height: 5em;
 }
 
 .curved {
@@ -62,7 +62,7 @@ header {
   text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.048);
 }
 
-.authentication-container .not-registered, .admin {
+.authentication-container .not-registered {
   width: 70%;
   font-size: 14px;
   display: flex;
@@ -131,6 +131,12 @@ header {
 .authentication-container .authentication-content button span {
   font-size: 16px;
   color: rgb(241, 235, 235) !important;
+}
+
+app-footer {
+  position: absolute;
+  z-index: -1;
+  bottom: 0px;
 }
 
 @media (max-width: 900px) {

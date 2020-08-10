@@ -14,5 +14,7 @@ namespace OfferLocker.Business.Offers.Models.Offer
 		public float Price { get; set; }
 
 		public Guid CategoryId { get; private set; }
+
+		public Guid UserId { get; private set; }
 	}
 }

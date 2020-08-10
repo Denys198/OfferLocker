@@ -90,6 +90,7 @@ button {
   border-radius: 8px;
   font-family: "Open Sans";
   font-weight: bold;
+  margin-right: 20px;
 }
 
 button span {

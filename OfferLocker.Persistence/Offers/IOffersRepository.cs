@@ -17,5 +17,7 @@ namespace OfferLocker.Persistence.Offers
 		Task<Offer> GetByIdWithComments(Guid id);
 
 		Task<IList<Offer>> GetByCategory(Guid categoryId);
+
+		Task<IList<Offer>> GetByUser(Guid userId);
 	}
 }

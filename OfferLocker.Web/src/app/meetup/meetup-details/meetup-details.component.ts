@@ -48,7 +48,7 @@ export class MeetupDetailsComponent implements OnInit {
       date: new FormControl('', [Validators.required]),
     });
 
-    if (this.router.url == 'meetups/create') {
+    if (this.router.url === '/meetups/create') {
       this.isAddMode = true;
     } else {
       this.routeSub = this.activatedRoute.params.subscribe((params) => {
@@ -72,7 +72,7 @@ export class MeetupDetailsComponent implements OnInit {
   save() {
     if (this.isAddMode) {
       this.service.post(this.formGroup.getRawValue()).subscribe();
-      this.router.navigate(['meetup-list']);
+      this.router.navigate(['meetups']);
     } else {
       this.service.patch(this.formGroup.getRawValue()).subscribe();
     }

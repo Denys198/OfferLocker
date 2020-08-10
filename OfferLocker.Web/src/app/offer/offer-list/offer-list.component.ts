@@ -17,7 +17,7 @@ export class OfferListComponent implements OnInit {
   constructor(
     private router: Router,
     private service: OfferService
-    ) { }
+  ) { }
 
   public ngOnInit(): void {
     this.service.getAll().subscribe((data: OffersModel) => {
@@ -29,6 +29,5 @@ export class OfferListComponent implements OnInit {
     console.log(id);
     this.router.navigate([`/offers/${id}`]);
   }
-
 }
 

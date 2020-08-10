@@ -36,6 +36,14 @@ namespace OfferLocker.API.Controllers
 			return Ok(result);
 		}
 
+		[HttpGet("/user-meetups/{userId}")]
+		public async Task<IActionResult> SearchByUser([FromRoute] Guid userId)
+		{
+			var result = await _meetupsService.GetByUser(userId);
+
+			return Ok(result);
+		}
+
 		[HttpPost]
 		public async Task<IActionResult> Add([FromBody] UpsertMeetupModel model)
 		{

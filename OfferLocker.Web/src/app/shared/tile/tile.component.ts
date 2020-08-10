@@ -7,8 +7,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TileComponent implements OnInit {
 
-  @Input() public imageLink: string = 'assets/images/placeholder.png';
+  @Input() public imageLink: string = '';
   @Input() public tileName: string = '';
+  @Input() public description: string = '';
 
   public hasPicture: boolean;
 

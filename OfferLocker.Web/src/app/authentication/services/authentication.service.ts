@@ -11,11 +11,11 @@ export class AuthenticationService {
   public endpoint: string =
     'https://localhost:5001/api/v1/auth';
 
-  constructor(private readonly httpClient: HttpClient) {}
+  constructor(private readonly httpClient: HttpClient) { }
 
-public register(data: unknown): Observable<unknown> {
-  return this.httpClient.post(`${this.endpoint}/register`, data);
-}
+  public register(data: unknown): Observable<unknown> {
+    return this.httpClient.post(`${this.endpoint}/register`, data);
+  }
 
 
   public login(data: unknown): Observable<unknown> {

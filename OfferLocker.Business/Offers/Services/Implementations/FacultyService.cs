@@ -1,7 +1,7 @@
 ﻿using OfferLocker.Business.Offers.Models.Faculty;
 using OfferLocker.Business.Offers.Services.Interfaces;
 using OfferLocker.Entities.Commons;
-using OfferLocker.Persistence.Commons;
+using OfferLocker.Persistence.Commons.Interfaces;
 using AutoMapper;
 using System;
 using System.Threading.Tasks;

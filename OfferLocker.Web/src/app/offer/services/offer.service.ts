@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { OfferModel } from '../models';
+import { OfferModel } from '../models/offer.model';
 import { OffersModel } from '../models/offers.model';
 
 @Injectable({
@@ -18,7 +18,9 @@ export class OfferService {
     }),
   };
 
-  constructor(private readonly http: HttpClient) {}
+  constructor(
+    private readonly http: HttpClient,
+  ) { }
 
   getAll(): Observable<OffersModel> {
     return this.http.get<OffersModel>(this.endpoint, this.httpOptions);
@@ -27,6 +29,17 @@ export class OfferService {
   get(id: string): Observable<OfferModel> {
     return this.http.get<OfferModel>(
       `${this.endpoint}/${id}`,
+      this.httpOptions
+    );
+  }
+
+  getByUserId(id: string): Observable<OffersModel> {
+    return this.http.get<OffersModel>(`https://localhost:5001/user-offers/${id}`, this.httpOptions);
+  }
+
+  getByCategory(id: string): Observable<OffersModel> {
+    return this.http.get<OffersModel>(
+      `https://localhost:5001/api/v1/categories/${id}`,
       this.httpOptions
     );
   }

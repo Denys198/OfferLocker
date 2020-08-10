@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OfferLocker.Entities.Commons;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,12 +7,13 @@ namespace OfferLocker.Entities.Offers
 {
 	public sealed class Offer : Entity
 	{
-		public Offer(string name, string description, float price, Guid categoryId) : base()
+		public Offer(string name, string description, float price, Guid categoryId, Guid userId) : base()
 		{
 			Name = name;
 			Description = description;
 			Price = price;
 			CategoryId = categoryId;
+			UserId = userId;
 			Photos = new List<Photo>();
 			Comments = new List<OfferComment>();
 		}
@@ -24,9 +26,13 @@ namespace OfferLocker.Entities.Offers
 
 		public Guid CategoryId { get; set; }
 
+		public Guid UserId { get; set; }
+
 		public ICollection<Photo> Photos { get; private set; }
 
 		public ICollection<OfferComment> Comments { get; private set; }
+		public ICollection<Notification> Notifications { get; private set; }
+		public ICollection<SavedOffer> SavedOffers { get; private set; }
 
 		public void AddComment(OfferComment comment)
 		{

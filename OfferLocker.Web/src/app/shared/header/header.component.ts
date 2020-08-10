@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
-import { categories } from 'src/app/categories/categories-data';
+import { CategoriesModel } from 'src/app/categories/models/categories.model';
+import { CategoryService } from 'src/app/categories/services/category';
+import { CategoryModel } from 'src/app/categories/models/category';
+
 
 @Component({
   selector: 'app-header',
@@ -9,15 +12,26 @@ import { categories } from 'src/app/categories/categories-data';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
+
+  public username: string;
   public projectTitle: string = "OfferLocker";
-  public categories;
+  public categories: CategoryModel[];
+  public userId: string;
+
   constructor(
     public readonly userService: UserService,
-    private readonly router: Router
+    private readonly cdRef: ChangeDetectorRef,
+    private readonly router: Router,
+    private service: CategoryService
   ) { }
 
   ngOnInit() {
-    this.categories = categories;
+    this.service.getAll().subscribe((data: CategoriesModel) => {
+      this.categories = data.results.sort().reverse();
+    });
+
+    this.username = JSON.parse(localStorage.getItem('userFullName'));
+    this.userId = JSON.parse(localStorage.getItem('userId'));
   }
 
   goToCategory(name: string): void {

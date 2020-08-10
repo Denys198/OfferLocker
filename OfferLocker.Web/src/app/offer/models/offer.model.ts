@@ -1,6 +1,8 @@
 export type OfferModel = {
-  id?: string;
+  id: string;
   name: string;
   description: string;
   price: number;
+  categoryId: string;
+  userId: string;
 };

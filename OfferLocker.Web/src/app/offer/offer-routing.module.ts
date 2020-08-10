@@ -19,7 +19,7 @@ const routes: Routes = [
   {
     path: 'create', // offers/create
     pathMatch: 'full',
-    component: CreateComponent,
+    component: OfferDetailsComponent,
   },
 ];
 

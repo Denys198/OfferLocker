@@ -7,13 +7,15 @@ namespace OfferLocker.Entities.Meetup
 {
 	public sealed class Meetup : Entity
 	{
-        public Meetup(string name, string description, DateTime date) : base()
+        public Meetup(string name, string description, DateTime date, Guid userId) : base()
         {
             Name = name;
 
             Description = description;
 
             Date = date;
+
+            UserId = userId;
         }
 
         [Required]
@@ -24,6 +26,8 @@ namespace OfferLocker.Entities.Meetup
 
         [Required]
         public DateTime Date { get; set; }
+
+        public Guid UserId { get; set; }
 
         public void Update(string name, string description, DateTime date)
         {

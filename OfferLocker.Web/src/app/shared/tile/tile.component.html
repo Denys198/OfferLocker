@@ -1,13 +1,14 @@
 <div class="tile">
 
   <div class="image">
-    <img src="{{imageLink}}" alt="{{tileName}}">
+    <img src="{{imageLink}}">
   </div>
 
   <hr>
 
   <div class="text">
-    <span>{{tileName}}</span>
+    <p class="name">{{tileName}}</p>
+    <p *ngIf="description!=null" class="description">{{description}}</p>
   </div>
 
 </div>
