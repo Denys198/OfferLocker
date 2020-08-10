@@ -1,4 +1,5 @@
-export type CategoriesModel = {
+export type NotificationsModel = {
   title: string;
   description: string;
+
 };

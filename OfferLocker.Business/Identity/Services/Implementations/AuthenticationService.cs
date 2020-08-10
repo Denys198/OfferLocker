@@ -70,7 +70,7 @@ namespace OfferLocker.Business.Identity.Services.Implementations
                 expires: DateTime.Now.AddHours(hours),
                 signingCredentials: credentials);
 
-            return new AuthenticationResponse(user.FullName, new JwtSecurityTokenHandler().WriteToken(token), user.Email);
+            return new AuthenticationResponse(user.FullName, new JwtSecurityTokenHandler().WriteToken(token), user.Email, user.Id.ToString());
         }
     }
 }

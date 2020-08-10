@@ -1,3 +1,4 @@
+import { UserService } from 'src/app/shared/services';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Campus } from '../models/campus'
@@ -10,12 +11,16 @@ import { Category } from '../models/category'
 })
 
 export class DashboardComponent implements OnInit {
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private userService: UserService
+  ) { }
 
   public goToPage(page: string): void {
     this.router.navigate([page]);
   }
 
+  public userEmail: string;
   public campusList: Campus[];
   public categoryList: Category[];
 

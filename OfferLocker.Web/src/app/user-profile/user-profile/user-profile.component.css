@@ -4,7 +4,8 @@ main {
 }
 
 h1 {
-  font-size: 27px;
+  font-size: 28px;
+  margin-right: 75px;
 }
 
 h1, h2 {
@@ -12,25 +13,9 @@ h1, h2 {
   text-shadow: 2px 2px 3px rgba(0,0,0,0.3);
 }
 
-#user-info img {
-  width: 25vw;
-  flex-shrink: 0;
-}
-
-#user-info {
+#user {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
-  /* align-items: center; */
-}
-
-#user-details {
-  margin: 0 0 0 75px;
-}
-
-#user-descr {
-  font-size: 18px;
-  line-height: 1.5;
 }
 
 h2 {
@@ -39,12 +24,14 @@ h2 {
 }
 
 #offers-section {
-  margin: 40px 0;
+  margin: 20px 0;
 }
 
 #offers {
-  display: flex;
-  flex-flow: row wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-self: center;
+  align-content: space-around;
   justify-content: space-between;
 }
 

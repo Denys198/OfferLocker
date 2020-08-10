@@ -7,7 +7,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 
 const routes: Routes = [
   {
-    path: '',
+    path: `:id`,
     pathMatch: 'full',
     component: UserProfileComponent,
   }

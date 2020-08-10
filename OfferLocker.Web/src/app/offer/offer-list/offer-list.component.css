@@ -4,9 +4,12 @@ main {
 }
 
 .cards {
-  display: flex;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-self: center;
+  align-content: space-around;
   justify-content: space-between;
-  flex-flow: row wrap;
 }
 
 h1{

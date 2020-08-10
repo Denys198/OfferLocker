@@ -32,5 +32,16 @@ img {
 
 .text {
   padding: 10px;
-  margin-bottom: 15px;
+  margin: 15px;
+  font-size: 20px;
+}
+
+.name {
+  width: 100%;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.description {
+  font-size: 16px;
 }
