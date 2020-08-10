@@ -17,11 +17,21 @@ namespace OfferLocker.AutomationTest.PageObjects.LoginPage
         [FindsBy(How = How.CssSelector, Using = "[type='button'")]
         public IWebElement ButtonSubmit { get; set; }
 
+        [FindsBy(How = How.Id, Using = "links")]
+        public IWebElement HeaderPage { get; set; }
+        [FindsBy(How = How.CssSelector, Using = "[type=checkbox]")]
+        public IWebElement CheckboxRegister { get; set; }
+        [FindsBy(How = How.CssSelector, Using = "[type='text']")]
+        public IWebElement TxtFullName { get; set; }
         public void Login(string email, string passwd)
         {
             TxtEmail.SendKeys(email);
             TxtPassword.SendKeys(passwd);
             ButtonSubmit.Click();
+        }
+        public void LoadRegisterForm()
+        {
+            CheckboxRegister.Click();
         }
     }
 }

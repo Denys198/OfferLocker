@@ -4,6 +4,7 @@ using SeleniumExtras.PageObjects;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace OfferLocker.AutomationTest.PageObjects
 {
@@ -15,10 +16,10 @@ namespace OfferLocker.AutomationTest.PageObjects
             this.driver = driver;
             PageFactory.InitElements(this, new RetryingElementLocator(this.driver, TimeSpan.FromSeconds(10)));
         }
-        public void waitForPageToLoad(string selector)
+        public void WaitForPageToLoad(string selector)
         {
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(40));
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector(selector)));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.CssSelector(selector)));
         }
     }
 }

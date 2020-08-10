@@ -10,7 +10,5 @@ namespace OfferLocker.AutomationTest.PageObjects.UserPage
     {
         public UserPage(IWebDriver driver) : base(driver) { }
 
-        [FindsBy(How=How.Id, Using = "links")]
-        public IWebElement ElementInPage { get; set; }
     }
 }

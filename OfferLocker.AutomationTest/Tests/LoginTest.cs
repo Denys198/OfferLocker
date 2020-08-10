@@ -24,13 +24,17 @@ namespace OfferLocker.AutomationTest.Tests
             loginPage = new LoginPage(Driver);
         }
         [Fact]
-        public void loginWithValidCredentials()
+        public void LoginWithValidCredentials()
         {
             loginPage.Login("popescuandrei@gmail.com", "string");
-            userPage = new UserPage(Driver);
-            userPage.waitForPageToLoad("[id=\"header-wrapper\"]");
-            //userPage.driver.FindElement(By.Id("links"));
-            Assert.True(userPage.ElementInPage.Displayed);
+            loginPage.WaitForPageToLoad("[id='header-wrapper']");
+            Assert.True(loginPage.HeaderPage.Displayed);
+        }
+        [Fact]
+        public void LoadRegisterForm()
+        {
+            loginPage.LoadRegisterForm();
+            Assert.True(loginPage.TxtFullName.Displayed);
         }
         public void Dispose()
         {
