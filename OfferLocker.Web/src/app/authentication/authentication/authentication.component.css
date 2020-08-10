@@ -23,7 +23,8 @@ header {
   opacity: 1;
   padding: 1em;
   float: left;
-  height: 5em;
+  width: 3em;
+  height: 3em;
 }
 
 .curved {

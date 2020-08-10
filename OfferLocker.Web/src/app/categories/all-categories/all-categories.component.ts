@@ -1,9 +1,8 @@
-import { CategoryModel } from '../models/category.model';
+import { categories } from 'src/app/categories/categories-data';
 import { Component, OnInit } from '@angular/core';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { Router } from '@angular/router';
-import { CategoriesModel } from '../models/categories.model';
-import { CategoryServiceService } from '../services/category.service.service';
+import { CategoryModel } from '../models/category';
 
 @Component({
   selector: 'app-all-categories',
@@ -12,21 +11,17 @@ import { CategoryServiceService } from '../services/category.service.service';
 })
 export class AllCategoriesComponent implements OnInit {
 
-  public categories: CategoryModel[];
+  public categories;
 
-  constructor(
-    private router: Router,
-    private service: CategoryServiceService
-  ) { }
+  constructor(private router: Router) { }
+
 
   public goToPage(page: string): void {
     this.router.navigate([page]);
   }
 
-  public ngOnInit(): void {
-    this.service.getAll().subscribe((data: CategoriesModel) => {
-      this.categories = data.results.sort().reverse();
-    });
+  ngOnInit(): void {
+    this.categories = categories;
   }
 
   goToCategory(name: string): void {
@@ -34,11 +29,4 @@ export class AllCategoriesComponent implements OnInit {
     this.router.navigate([`/categories/${name}`]);
   }
 
-  getImage(name: string) {
-    if (name.indexOf(' ') != -1) {
-      let length = name.indexOf(' ');
-      return name.substring(0, length).toLowerCase();
-    }
-    else return name.toLowerCase();
-  }
 }

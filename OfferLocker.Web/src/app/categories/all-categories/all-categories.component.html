@@ -3,8 +3,8 @@
 <main>
   <h1>Categories</h1>
   <div class="cards">
-    <tile *ngFor="let category of categories" imageLink="assets/images/categories/{{getImage(category.name)}}.png"
-      tileName="{{category.name}}" (click)="goToCategory(category.id)">
+    <tile *ngFor="let category of categories" imageLink="{{category.imgLink}}" tileName="{{category.name}}"
+      (click)="goToCategory(category.link)">
     </tile>
   </div>
 

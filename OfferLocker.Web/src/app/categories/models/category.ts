@@ -3,4 +3,5 @@ export class CategoryModel {
   public name: string;
   public description: string;
   public backgroundImage?: string;
+
 }
