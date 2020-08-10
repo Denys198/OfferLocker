@@ -2,7 +2,7 @@
 using OfferLocker.Business.Offers.Services.Interfaces;
 using OfferLocker.Entities.Commons;
 using OfferLocker.Entities.Identity;
-using OfferLocker.Persistence.Commons;
+using OfferLocker.Persistence.Commons.Implementations;
 using OfferLocker.Persistence.Identity;
 using System;
 using System.Collections.Generic;

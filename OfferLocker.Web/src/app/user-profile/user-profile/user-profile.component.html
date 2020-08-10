@@ -3,29 +3,16 @@
 <main>
   <section id="user">
     <h1>{{username}}</h1>
-
-    <div id="user-info">
-      <img src="{{placeholder}}" alt="User picture">
-
-      <div id="user-details">
-        <p id="user-descr">{{ userDescription }}</p>
-        <app-button class="follow">Follow</app-button>
-      </div>
-    </div>
+    <app-button *ngIf="isCurrentUser()" class="follow" buttonText="Follow"></app-button>
   </section>
+
 
   <section id="offers-section">
     <h2>Active offers</h2>
-    <div id=offers class="offers-section">
-      <tile *ngFor="let offer of offerList" imageLink="" tileName="{{offer.name}}" (click)="goToOffer(offer.id)"></tile>
+    <div class="cards" id="offers">
+      <tile *ngFor="let offer of offerList" tileName="{{offer.name}}" imageLink="assets/images/undraw_gifts_btw0.png"
+        (click)="goToOffer(offer.id)"></tile>
     </div>
-  </section>
-
-  <section id="reviews">
-    <h2>User reviews</h2>
-    <review></review>
-    <review></review>
-    <review></review>
   </section>
 </main>
 

@@ -1,4 +1,4 @@
-import { CategoryModel } from './../models/category';
+import { CategoryModel } from './../models/category.model';
 import { Component, OnInit } from '@angular/core';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { Router } from '@angular/router';
@@ -16,8 +16,8 @@ export class AllCategoriesComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private service: CategoryService) {
-  }
+    private service: CategoryService
+  ) { }
 
   public goToPage(page: string): void {
     this.router.navigate([page]);

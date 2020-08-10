@@ -16,6 +16,8 @@ namespace OfferLocker.Business.Offers.Services.Interfaces
 
 		Task<IList<OfferModel>> GetByCategory(Guid categoryId);
 
+		Task<IList<OfferModel>> GetByUser(Guid userId);
+
 		Task Update(Guid id, UpsertOfferModel model);
 
 		Task Delete(Guid id);

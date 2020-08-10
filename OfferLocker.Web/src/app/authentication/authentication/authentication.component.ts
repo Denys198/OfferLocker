@@ -5,8 +5,9 @@ import { Subscription } from 'rxjs';
 import { LoginModel } from '../models/login.model';
 import { RegisterModel } from '../models/register.model';
 import { AuthenticationService } from '../services/authentication.service';
-import { UserService } from 'src/app/shared/services';
+import { UserService } from 'src/app/shared/services/user.service';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { UserModel } from 'src/app/shared/user-models/user.model';
 
 @Component({
   selector: 'app-authentication',
@@ -15,13 +16,14 @@ import { SharedModule } from 'src/app/shared/shared.module';
   providers: [AuthenticationService],
 })
 export class AuthenticationComponent {
+
+  private routeSub: Subscription;
   //private subscription: Subscription;
   public isSetRegistered: boolean = false;
-  public isAdmin: boolean = false;
-  //public email: string = null;
-  //public password: string = null;
-  //public fullName: string = null;
   public formGroup: FormGroup;
+  public user: UserModel;
+  public userEmail: string;
+  public userId: string;
 
   constructor(
     private readonly authenticationService: AuthenticationService,
@@ -37,31 +39,35 @@ export class AuthenticationComponent {
     this.userService.username.next('');
   }
 
-
   setRegister(): void {
     this.isSetRegistered = !this.isSetRegistered;
   }
 
-  setAdmin(): void {
-    this.isAdmin = !this.isAdmin;
-  }
-
   public authenticate(): void {
     if (this.isSetRegistered) {
-      const data: LoginModel = this.formGroup.getRawValue();
+      const data: RegisterModel = this.formGroup.getRawValue();
 
       this.authenticationService.register(data).subscribe(() => {
         this.userService.username.next(data.email);
         this.router.navigate(['user']);
       });
     } else {
-      const data: RegisterModel = this.formGroup.getRawValue();
+      const data: LoginModel = this.formGroup.getRawValue();
       this.formGroup.removeControl('fullName');
 
       this.authenticationService.login(data).subscribe((logData: any) => {
+
+        console.log(`logdata email: ${logData.email}`);
+
         localStorage.setItem('userToken', JSON.stringify(logData.token));
+        localStorage.setItem('userEmail', JSON.stringify(logData.email));
+        localStorage.setItem('userFullName', JSON.stringify(logData.fullName));
+        localStorage.setItem('userId', JSON.stringify(logData.id));
+
+        this.userId = JSON.parse(localStorage.getItem('userId'));
+
         this.userService.username.next(data.email);
-        this.router.navigate(['user']);
+        this.router.navigate([`user/${this.userId}`]);
       });
     }
   }

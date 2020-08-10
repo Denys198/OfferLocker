@@ -11,5 +11,7 @@ namespace OfferLocker.Business.Meetups.Models
 		public string Description { get; set; }
 
 		public DateTime Date { get; set; }
+
+		public Guid UserId { get; private set; }
 	}
 }

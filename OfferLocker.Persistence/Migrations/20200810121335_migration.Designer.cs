@@ -10,7 +10,7 @@ using OfferLocker.Persistence;
 namespace OfferLocker.Persistence.Migrations
 {
     [DbContext(typeof(OffersContext))]
-    [Migration("20200809111636_migration")]
+    [Migration("20200810121335_migration")]
     partial class migration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -120,6 +120,67 @@ namespace OfferLocker.Persistence.Migrations
                     b.HasIndex("IdUserFollower");
 
                     b.ToTable("Follow");
+                });
+
+            modelBuilder.Entity("OfferLocker.Entities.Commons.Notification", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("OfferId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OfferId");
+
+                    b.ToTable("Notifications");
+                });
+
+            modelBuilder.Entity("OfferLocker.Entities.Commons.NotificationsToUsers", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("NotificationId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NotificationId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("NotificationToUsers");
+                });
+
+            modelBuilder.Entity("OfferLocker.Entities.Commons.SavedOffer", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("OfferId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OfferId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("SavedOffers");
                 });
 
             modelBuilder.Entity("OfferLocker.Entities.Commons.University", b =>
@@ -242,6 +303,9 @@ namespace OfferLocker.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
                     b.HasIndex("Name")
@@ -267,6 +331,9 @@ namespace OfferLocker.Persistence.Migrations
 
                     b.Property<float>("Price")
                         .HasColumnType("real");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -347,6 +414,44 @@ namespace OfferLocker.Persistence.Migrations
                         .WithMany("Following")
                         .HasForeignKey("IdUserFollower")
                         .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("OfferLocker.Entities.Commons.Notification", b =>
+                {
+                    b.HasOne("OfferLocker.Entities.Offers.Offer", null)
+                        .WithMany("Notifications")
+                        .HasForeignKey("OfferId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("OfferLocker.Entities.Commons.NotificationsToUsers", b =>
+                {
+                    b.HasOne("OfferLocker.Entities.Commons.Notification", null)
+                        .WithMany("ToUsers")
+                        .HasForeignKey("NotificationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("OfferLocker.Entities.Identity.User", null)
+                        .WithMany("Notifications")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("OfferLocker.Entities.Commons.SavedOffer", b =>
+                {
+                    b.HasOne("OfferLocker.Entities.Offers.Offer", null)
+                        .WithMany("SavedOffers")
+                        .HasForeignKey("OfferId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("OfferLocker.Entities.Identity.User", null)
+                        .WithMany("SavedOffers")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 

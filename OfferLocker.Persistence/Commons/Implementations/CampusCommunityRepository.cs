@@ -4,8 +4,9 @@ using LinqBuilder.Core;
 using Microsoft.EntityFrameworkCore;
 
 using OfferLocker.Entities.Commons;
+using OfferLocker.Persistence.Commons.Interfaces;
 
-namespace OfferLocker.Persistence.Commons
+namespace OfferLocker.Persistence.Commons.Implementations
 {
     public sealed class CampusCommunityRepository : Repository<CampusCommunity>, ICampusCommunityRepository
     {

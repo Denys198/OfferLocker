@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { OfferService } from 'src/app/offer/services/offer.service';
 import { CategoryService } from '../services/category';
-import { CategoryModel } from '../models/category';
+import { CategoryModel } from '../models/category.model';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -17,22 +17,26 @@ export class CategoryComponent implements OnInit {
   private routeSub: Subscription;
   public offerList: OfferModel[];
   private id: string;
-  public category;
+  public category: CategoryModel;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private service: CategoryService
+    private categoryService: CategoryService,
+    private offerService: OfferService
   ) { }
 
   ngOnInit(): void {
     this.routeSub = this.route.params.subscribe(params => {
       this.id = params['id'];
-      console.log(this.id);
     });
 
-    this.service.get(this.id).subscribe((data: CategoryModel) => {
+    this.categoryService.get(this.id).subscribe((data: CategoryModel) => {
       this.category = data;
+    });
+
+    this.categoryService.getOffers(this.id).subscribe((data: OffersModel) => {
+      this.offerList = data.results;
     });
   }
 

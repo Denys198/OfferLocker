@@ -35,6 +35,14 @@ namespace OfferLocker.API.Controllers
             return Ok(result);
         }
 
+        [HttpGet("/user-offers/{userId}")]
+        public async Task<IActionResult> SearchByUser([FromRoute] Guid userId)
+        {
+            var result = await _offersService.GetByUser(userId);
+
+            return Ok(result);
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> Get([FromRoute] Guid id)
         {

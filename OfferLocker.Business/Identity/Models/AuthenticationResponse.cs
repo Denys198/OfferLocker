@@ -9,11 +9,14 @@ namespace OfferLocker.Business.Identity.Models
 
         public string Token { get; private set; }
 
-        public AuthenticationResponse(string fullName, string token, string email)
+        public string Id { get; private set; }
+
+        public AuthenticationResponse(string fullName, string token, string email, string id)
         {
             FullName = fullName;
             Token = token;
             Email = email;
+            Id = id;
         }
     }
 }

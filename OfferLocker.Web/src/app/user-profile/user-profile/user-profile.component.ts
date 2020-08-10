@@ -3,7 +3,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
 
 import { OfferModel, OffersModel } from 'src/app/offer/models'
 import { OfferService } from 'src/app/offer/services/offer.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-user-profile',
@@ -12,22 +13,31 @@ import { Router } from '@angular/router';
 })
 export class UserProfileComponent implements OnInit {
 
+  private routeSub: Subscription;
   public offerList: OfferModel[];
-
-  public placeholder: string = "assets/images/placeholder.png";
-  public userDescription: string = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-
-  public username: string = "John Doe";
+  public id: string;
+  public username: string = JSON.parse(localStorage.getItem('userFullName'));
 
   constructor(
+    private route: ActivatedRoute,
     private router: Router,
     private service: OfferService
   ) { }
 
   public ngOnInit(): void {
-    this.service.getAll().subscribe((data: OffersModel) => {
-      this.offerList = data.results;
+
+    this.routeSub = this.route.params.subscribe(params => {
+      this.id = params['id'];
+      console.log(this.id)
+
+      this.service.getAll().subscribe((data: OffersModel) => {
+        this.offerList = data.results;
+      });
     });
+  }
+
+  isCurrentUser() {
+    return (JSON.parse(localStorage.getItem('userFullName')) == this.id) ? true : false;
   }
 
   goToOffer(id: string): void {
