@@ -29,6 +29,5 @@ export class OfferListComponent implements OnInit {
     console.log(id);
     this.router.navigate([`/offers/${id}`]);
   }
-
 }
 
