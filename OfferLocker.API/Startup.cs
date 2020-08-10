@@ -64,7 +64,8 @@ namespace OfferLocker.API
 				.AddScoped<ICampusCommunityService, CampusCommunityService>()
 				.AddScoped<IUserTypeService, UserTypeService>()
 				.AddScoped<INotificationService, NotificationService>()
-				.AddScoped<ISavedOfferService, SavedOfferService>();
+				.AddScoped<ISavedOfferService, SavedOfferService>()
+				.AddScoped<IUserService, UserService>();
 
 			AddAuthentication(services);
 
