@@ -4,5 +4,5 @@ export type OffersModel = {
   count: number;
   pageIndex: number;
   pageSize: number;
-  results:  OfferModel[];
+  results: OfferModel[];
 }

@@ -11,8 +11,8 @@
         aria-expanded="false">Categories</a>
       <div id="dropdown" class="dropdown-menu">
         <a class="dropdown-item" href="/categories">All categories</a>
-        <a class="dropdown-item" href="categories/{{category.link}}" *ngFor="let category of categories"
-          (click)="goToCategory(category.link)">{{category.name}}</a>
+        <a class="dropdown-item" href="categories/{{category.id}}" *ngFor="let category of categories"
+          (click)="goToCategory(category.id)">{{category.name}}</a>
       </div>
 
       <a class="nav-item" href="/user">My profile

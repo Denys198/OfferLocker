@@ -3,8 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { OfferService } from 'src/app/offer/services/offer.service';
-import { CategoryService } from '../services/category';
-import { CategoryModel } from '../models/category';
+import { CategoryServiceService } from '../services/category.service.service';
+import { CategoryModel } from '../models/category.model';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -16,19 +16,18 @@ export class CategoryComponent implements OnInit {
 
   private routeSub: Subscription;
   public offerList: OfferModel[];
-  private id: string;
-  public category;
+  public id: string;
+  public category: CategoryModel;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private service: CategoryService
+    private service: CategoryServiceService
   ) { }
 
   ngOnInit(): void {
     this.routeSub = this.route.params.subscribe(params => {
       this.id = params['id'];
-      console.log(this.id);
     });
 
     this.service.get(this.id).subscribe((data: CategoryModel) => {
@@ -37,7 +36,6 @@ export class CategoryComponent implements OnInit {
   }
 
   goToOffer(id: string): void {
-    console.log(id);
     this.router.navigate(['/offers/${id}']);
   }
 

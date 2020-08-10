@@ -1,4 +1,4 @@
-import { CategoryModel } from './category';
+import { CategoryModel } from 'src/app/categories/models/category.model';
 
 export type CategoriesModel = {
   count: number;
