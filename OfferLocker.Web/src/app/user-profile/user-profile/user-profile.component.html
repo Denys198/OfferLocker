@@ -1,0 +1,19 @@
+<app-header></app-header>
+
+<main>
+  <section id="user">
+    <h1>{{username}}</h1>
+    <app-button *ngIf="isCurrentUser()" class="follow" buttonText="Follow"></app-button>
+  </section>
+
+
+  <section id="offers-section">
+    <h2>Active offers</h2>
+    <div class="cards" id="offers">
+      <tile *ngFor="let offer of offerList" tileName="{{offer.name}}" imageLink="assets/images/undraw_gifts_btw0.png"
+        (click)="goToOffer(offer.id)"></tile>
+    </div>
+  </section>
+</main>
+
+<app-footer></app-footer>

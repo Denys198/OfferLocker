@@ -1,0 +1,38 @@
+main {
+  width: 80%;
+  margin: 40px auto;
+}
+
+h1 {
+  font-size: 28px;
+  margin-right: 75px;
+}
+
+h1, h2 {
+  color: rgba(0, 0, 0, 0.750);
+  text-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+}
+
+#user {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+h2 {
+  font-size: 25px;
+  font-weight: normal;
+}
+
+#offers-section {
+  margin: 20px 0;
+}
+
+#offers {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-self: center;
+  align-content: space-around;
+  justify-content: space-between;
+}
+
+

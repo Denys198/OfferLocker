@@ -1,0 +1,12 @@
+<app-header></app-header>
+
+<main>
+  <h1>Categories</h1>
+  <div class="cards">
+    <tile *ngFor="let category of categories" imageLink="assets/images/categories/{{getImage(category.name)}}.png"
+      tileName="{{category.name}}" (click)="goToCategory(category.id)">
+    </tile>
+  </div>
+
+</main>
+<app-footer></app-footer>

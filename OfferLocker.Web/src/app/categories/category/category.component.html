@@ -1,0 +1,23 @@
+<app-header></app-header>
+
+<main>
+  <section id="category">
+    <h1>Category: {{category.name}}</h1>
+
+    <div id="category-info">
+      <img src="assets/images/categories/{{getImage(category.name)}}.png" alt="Category picture">
+      <div id="category-details">
+        <p id="category-descr">{{ category.description }}</p>
+        <div class="line">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <h2>Offers in this category </h2>
+  <div class="cards">
+    <tile *ngFor="let offer of offerList" tileName="{{offer.name}}" (click)="goToOffer(offer.id)"></tile>
+  </div>
+</main>
+
+<app-footer></app-footer>
