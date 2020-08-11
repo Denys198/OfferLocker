@@ -40,7 +40,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(): void {
-    this.userService.email.next(null);
+    this.userService.email = null;
     this.router.navigate(['authentication']);
   }
 }

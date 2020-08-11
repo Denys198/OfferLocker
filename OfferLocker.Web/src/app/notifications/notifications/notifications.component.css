@@ -22,7 +22,8 @@ h1 {
   list-style-type: none;
 }
 
-ul li {
+li {
+  font-size: 18px;
   display: flex;
   align-items: center;
   height: 40px;
@@ -31,7 +32,9 @@ ul li {
   padding: 8px;
   margin-bottom: 20px;
 }
+
 img {
-  width: 30vw;
-  height: 30vw;
+  width: 25vw;
+  height: 25vw;
+  margin-bottom: 50px;
 }

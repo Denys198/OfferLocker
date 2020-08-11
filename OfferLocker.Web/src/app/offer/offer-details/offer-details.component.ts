@@ -48,7 +48,7 @@ export class OfferDetailsComponent implements OnInit {
       price: new FormControl('', [Validators.required]),
     });
 
-    if (this.router.url === '/offer/create') {
+    if (this.router.url === '/offers/create') {
       this.isAddMode = true;
     } else {
       this.routeSub = this.activatedRoute.params.subscribe((params) => {
@@ -72,7 +72,7 @@ export class OfferDetailsComponent implements OnInit {
   save() {
     if (this.isAddMode) {
       this.service.post(this.formGroup.getRawValue()).subscribe();
-      this.router.navigate(['offer/list']);
+      this.router.navigate(['offers']);
     } else {
       this.service.patch(this.formGroup.getRawValue()).subscribe();
     }

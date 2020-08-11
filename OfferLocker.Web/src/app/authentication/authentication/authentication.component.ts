@@ -49,7 +49,7 @@ export class AuthenticationComponent {
 
       this.authenticationService.register(data).subscribe(() => {
         this.userService.username.next(data.email);
-        this.router.navigate(['user']);
+        this.router.navigate(['authentication']);
       });
     } else {
       const data: LoginModel = this.formGroup.getRawValue();
@@ -67,7 +67,7 @@ export class AuthenticationComponent {
         this.userId = JSON.parse(localStorage.getItem('userId'));
 
         this.userService.username.next(data.email);
-        this.router.navigate([`user/${this.userId}`]);
+        this.router.navigate([`dashboard`]);
       });
     }
   }

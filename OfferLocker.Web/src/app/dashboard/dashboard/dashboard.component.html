@@ -1,31 +1,27 @@
 <app-header></app-header>
 
 <main>
-
   <div class="page-container">
+
+    <h1>Navigate</h1>
+    <div class="cards">
+      <tile tileName="Notifications" imageLink="assets/images/undraw_profile_6l1l.png" icon="notifications"
+        (click)="goToPage('notifications')"></tile>
+      <tile tileName="Categories" imageLink="assets/images/undraw_gifts_btw0.png" icon="list"
+        (click)="goToPage('categories')">
+      </tile>
+      <tile tileName="Campus Communities" imageLink="assets/images/meetup.svg" icon="list"
+        (click)="goToPage('communities')">
+      </tile>
+    </div>
+
     <h1>Offers</h1>
     <div class="cards">
-      <tile tileName="All Offers" icon="list" (click)="goToPage('offers')"></tile>
-    </div>
-
-    <h1>My Campus Communities</h1>
-    <div class="cards">
-      <tile tileName="All Campuses" icon="list" (click)="goToPage('communities')"></tile>
-    </div>
-
-    <h1>Categories</h1>
-    <div class="cards">
-      <tile tileName="All Categories" icon="list" (click)="goToPage('categories')"></tile>
-    </div>
-
-
-
-    <div>
-      <br><br>
-      <h1>Notifications</h1>
-      <br><br>
-      <tile tileName="Notifications" icon="notifications" (click)="goToPage('notifications')"></tile>
+      <tile tileName="All Offers" imageLink="assets/images/offers.svg" icon="list" (click)="goToPage('offers')"></tile>
+      <tile tileName="Create Offer" imageLink="assets/images/undraw_upload_image_iwej.svg" icon="list"
+        (click)="goToPage('offers/create')"></tile>
     </div>
   </div>
 </main>
+
 <app-footer></app-footer>
