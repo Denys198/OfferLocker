@@ -1,13 +1,11 @@
 ﻿using OfferLocker.Business.Identity.Models;
 using OfferLocker.Business.Offers.Services.Interfaces;
 using OfferLocker.Entities.Commons;
-using OfferLocker.Entities.Identity;
 using OfferLocker.Persistence.Commons.Implementations;
 using OfferLocker.Persistence.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace OfferLocker.Business.Offers.Services.Implementations

@@ -7,12 +7,11 @@ using OfferLocker.Persistence.Offers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace OfferLocker.Business.Offers.Services.Implementations
 {
-	public sealed class OfferCommentsService : IOfferCommentsService
+    public sealed class OfferCommentsService : IOfferCommentsService
 	{
 		private readonly IOffersRepository _repository;
 		private readonly IMapper _mapper;

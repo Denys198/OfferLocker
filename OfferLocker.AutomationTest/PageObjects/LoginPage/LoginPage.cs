@@ -19,10 +19,10 @@ namespace OfferLocker.AutomationTest.PageObjects.LoginPage
         public IWebElement TxtPassword { get; set; }
 
         [FindsBy(How = How.CssSelector, Using = "[type='button'")]
-        public IWebElement ButtonSubmit { get; set; }
+        public IWebElement BtnSubmit { get; set; }
 
         [FindsBy(How = How.CssSelector, Using = "[type=checkbox]")]
-        public IWebElement CheckboxRegister { get; set; }
+        public IWebElement ChkRegister { get; set; }
 
         [FindsBy(How = How.CssSelector, Using = "[type='text']")]
         public IWebElement TxtFullName { get; set; }
@@ -31,11 +31,12 @@ namespace OfferLocker.AutomationTest.PageObjects.LoginPage
         {
             TxtEmail.SendKeys(email);
             TxtPassword.SendKeys(passwd);
-            ButtonSubmit.Click();
+            BtnSubmit.Click();
         }
+
         public void LoadRegisterForm()
         {
-            CheckboxRegister.Click();
+            ChkRegister.Click();
         }
     }
 }

@@ -2,9 +2,6 @@
 using OfferLocker.Business.Identity.Models;
 using OfferLocker.Business.Identity.Services.Interfaces;
 using OfferLocker.Persistence.Identity;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace OfferLocker.Business.Identity.Services.Implementations

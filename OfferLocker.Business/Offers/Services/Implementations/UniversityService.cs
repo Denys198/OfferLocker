@@ -5,9 +5,7 @@ using AutoMapper;
 using System;
 using System.Threading.Tasks;
 using OfferLocker.Business.Offers.Services.Interfaces;
-using System.Collections;
 using System.Collections.Generic;
-using LinqBuilder.Core;
 using OfferLocker.Business.Offers.Models.Offer;
 using OfferLocker.Business.Offers.Extensions;
 

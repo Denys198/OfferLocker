@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using AutoMapper;
 using OfferLocker.Business.Offers.Models.Notification;
 using OfferLocker.Business.Offers.Services.Interfaces;
-using OfferLocker.Entities.Commons;
 using OfferLocker.Persistence.Commons.Interfaces;
 
 namespace OfferLocker.Business.Offers.Services.Implementations

@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using OfferLocker.Business.Identity.Services.Implementations;
 using OfferLocker.Business.Identity.Services.Interfaces;
 
 namespace OfferLocker.API.Controllers

@@ -1,12 +1,11 @@
 ﻿using OfferLocker.Business.Offers.Models.Offer;
-using OfferLocker.Entities.Offers;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace OfferLocker.Business.Offers.Services.Interfaces
 {
-	public interface IOffersService
+    public interface IOffersService
 	{
 		Task<OfferModel> Add(UpsertOfferModel model);
 

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace OfferLocker.Business.Offers.Models.University
+﻿namespace OfferLocker.Business.Offers.Models.University
 {
     public sealed class UpsertUniversityModel
     {

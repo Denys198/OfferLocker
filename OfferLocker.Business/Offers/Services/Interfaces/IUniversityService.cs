@@ -1,8 +1,6 @@
 ﻿using OfferLocker.Business.Offers.Models.Offer;
 using OfferLocker.Business.Offers.Models.University;
-using OfferLocker.Entities.Commons;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace OfferLocker.Business.Offers.Services.Interfaces

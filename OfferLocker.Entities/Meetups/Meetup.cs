@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace OfferLocker.Entities.Meetup
 {
-	public sealed class Meetup : Entity
+    public sealed class Meetup : Entity
 	{
         public Meetup(string name, string description, DateTime date, Guid userId) : base()
         {

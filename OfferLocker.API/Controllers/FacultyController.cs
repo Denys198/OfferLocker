@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 using OfferLocker.Business.Offers.Models.Faculty;
-using Microsoft.AspNetCore.Authorization;
 using OfferLocker.Business.Offers.Models.Offer;
 
 namespace OfferLocker.API.Controllers

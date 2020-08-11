@@ -11,7 +11,7 @@ namespace OfferLocker.AutomationTest.PageObjects
         
         public void WaitForPageToLoad(string selector)
         {
-            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(40));
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.CssSelector(selector)));
         }
     }

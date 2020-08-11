@@ -4,8 +4,6 @@ using OfferLocker.Business.Offers.Services.Interfaces;
 using OfferLocker.Entities.Commons;
 using OfferLocker.Persistence.Commons.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace OfferLocker.Business.Offers.Services.Implementations

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace OfferLocker.Entities.Identity
+﻿namespace OfferLocker.Entities.Identity
 {
     public sealed class Student : Entity
     {

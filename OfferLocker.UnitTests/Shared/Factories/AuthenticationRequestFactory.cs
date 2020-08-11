@@ -1,7 +1,5 @@
 ﻿using OfferLocker.Business.Identity.Models;
 using OfferLocker.UnitTests.Shared.Extensions;
-using System.Security.Cryptography.X509Certificates;
-using System.Security.Policy;
 
 namespace OfferLocker.UnitTests.Shared.Factories
 {

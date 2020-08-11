@@ -1,10 +1,5 @@
 ﻿using LinqBuilder.Core;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
-using OfferLocker.Entities;
-using OfferLocker.Entities.Commons;
-using OfferLocker.Entities.Identity;
-using OfferLocker.Entities.Category;
 using OfferLocker.Entities.Offers;
 using System;
 using System.Collections.Generic;
@@ -13,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace OfferLocker.Persistence.Offers
 {
-	public sealed class OffersRepository : Repository<Offer>, IOffersRepository
+    public sealed class OffersRepository : Repository<Offer>, IOffersRepository
 	{
         public OffersRepository(OffersContext context) : base(context) { }
 

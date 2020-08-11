@@ -2,7 +2,6 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
 using OfferLocker.Business.Offers.Models.University;
 using OfferLocker.Business.Offers.Models.Offer;
 

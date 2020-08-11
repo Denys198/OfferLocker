@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using OfferLocker.Business.Offers.Services.Interfaces;
 using OfferLocker.Business.Offers.Models.Offer;
 using OfferLocker.Business.Offers.Extensions;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace OfferLocker.Business.Offers.Services.Implementations

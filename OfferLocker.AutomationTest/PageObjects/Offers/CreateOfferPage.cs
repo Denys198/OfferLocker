@@ -14,12 +14,15 @@ namespace OfferLocker.AutomationTest.PageObjects
 
         [FindsBy(How = How.CssSelector, Using = "[type='text']")]
         public IWebElement TxtName { get; set; }
-        [FindsBy(How = How.CssSelector, Using = "#formGroup > div:nth-child(2) > textarea")]
+
+        [FindsBy(How = How.XPath, Using = "//textarea[@formcontrolname='description']")]
         public IWebElement TxtDescription { get; set; }
+
         [FindsBy(How = How.CssSelector, Using = "[type='number']")]
         public IWebElement TxtPrice { get; set; }
+
         [FindsBy(How = How.CssSelector, Using = "#formGroup > app-submit-button > button")]
-        public IWebElement ButtonSubmit { get; set; }
+        public IWebElement BtnSubmit { get; set; }
 
         public void FillOfferForm(string offerName, string offerDescription, string price)
         {
@@ -27,7 +30,7 @@ namespace OfferLocker.AutomationTest.PageObjects
             TxtDescription.SendKeys(offerDescription);
             TxtPrice.SendKeys(price);
 
-            ButtonSubmit.Click();
+            BtnSubmit.Click();
         }
 
     }

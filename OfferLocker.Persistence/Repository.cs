@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using OfferLocker.Entities;
 
 namespace OfferLocker.Persistence
 {
-	public abstract class Repository<T> 
+    public abstract class Repository<T> 
         : IRepository<T> where T : Entity
 	{
         protected readonly OffersContext context;

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace OfferLocker.Business.Offers.Models.UserType
+﻿namespace OfferLocker.Business.Offers.Models.UserType
 {
     public sealed class UpsertUserTypeModel
     {

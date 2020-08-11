@@ -1,5 +1,4 @@
 ﻿using OfferLocker.Business.Identity.Models;
-using System.Runtime.CompilerServices;
 
 namespace OfferLocker.UnitTests.Shared.Extensions
 {

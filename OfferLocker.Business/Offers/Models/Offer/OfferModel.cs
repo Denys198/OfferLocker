@@ -1,9 +1,8 @@
-﻿using OfferLocker.Entities.Offers;
-using System;
+﻿using System;
 
 namespace OfferLocker.Business.Offers.Models.Offer
 {
-	public sealed class OfferModel
+    public sealed class OfferModel
 	{
 		public Guid Id { get; private set; }
 
