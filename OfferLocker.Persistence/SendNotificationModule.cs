@@ -18,11 +18,11 @@ namespace OfferLocker.Persistence
             Notification notification = null;
             if(action == Action.Update)
             {
-                notification = new Notification("Oferta avand urmatoarele detalii a fost modificata: Nume: " + offer.Name + ", Descriere: " + offer.Description + ", Pret: "+offer.Price, offer.Id);
+                notification = new Notification("The offer with following details was modified: Name: " + offer.Name + ", Description: " + offer.Description + ", Price: "+offer.Price, offer.Id);
             }
             else if (action == Action.Delete)
             {
-                notification = new Notification("Oferta avand urmatoarele detalii a fost stearsa: Nume:" + offer.Name + ", Descriere: " + offer.Description + ", Pret: " + offer.Price, null);
+                notification = new Notification("The offer with following details was deleted: Nume:" + offer.Name + ", Descriere: " + offer.Description + ", Pret: " + offer.Price, null);
             }
             context.Notifications.Add(notification);
             context.SaveChanges();

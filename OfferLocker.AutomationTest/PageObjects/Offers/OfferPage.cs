@@ -2,17 +2,17 @@
 using SeleniumExtras.PageObjects;
 using System;
 
-namespace OfferLocker.AutomationTest.PageObjects.UserPage
+namespace OfferLocker.AutomationTest.PageObjects.Offers
 {
-    public class UserPage : BasePage
+    public class OfferPage : BasePage
     {
-        public UserPage(IWebDriver driver)
+        public OfferPage(IWebDriver driver)
         {
             this.driver = driver;
             PageFactory.InitElements(this, new RetryingElementLocator(this.driver, TimeSpan.FromSeconds(10)));
         }
 
         [FindsBy(How = How.Id, Using = "links")]
-        public IWebElement HeaderPage { get; set; }
+        public IWebElement LinksForUser { get; set; }
     }
 }
